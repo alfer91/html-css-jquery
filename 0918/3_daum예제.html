@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>다음사이트</title>
+</head>
+<body>
+<h1>
+    <a href="http://daum.net">
+        <img src="img/daum_logo.png" width="180"
+             alt="DAUM" />
+    </a>
+</h1>
+<h2>검색</h2>
+
+<!--
+유저의 데이터를 서버로 넘길때 필요한 요소 : form
+
+form의 속성 : action(주소) /
+              method(GET,POST,PUT,DELETE...)
+
+
+폼의 입력필드를 묶는 fieldset과
+fieldset의 제목을 의미하는 legend
+
+데이터 : 파라미터(이름과 값:네임과 벨류)
+
+ -->
+<form action="http://search.daum.net/search"
+method="get">
+<fieldset>
+    <legend>통합 검색</legend>
+    <input size="55" name="q"
+           placeholder="검색어 입력"/>
+    <button>검색</button>
+</fieldset>
+</form>
+<a href="http://cs.daum.net/faq/15/14957.html#28978">서제스트란?</a>
+<h3>인기 검색어</h3>
+<!-- ol, ul, dl -->
+<ul>
+    <li><a href="">문재인 입국</a></li>
+    <li><a href="">이찬혁 입대</a></li>
+    <li><a href="">추신수 안타</a></li>
+    <li><a href="">철도의 날</a></li>
+    <li><a href="">유소연 메이저어워드</a></li>
+</ul>
+<ul>
+    <li><a href="">류현진 등판</a></li>
+    <li><a href="">이지혜 결혼</a></li>
+    <li><a href="">추석 음식비용</a></li>
+    <li><a href="">아이유 리메이크</a></li>
+    <li><a href="">로또 미수령 당첨금</a></li>
+</ul>
+<div>
+    <button> &lt; 이전</button>
+    <button> &gt; 다음</button>
+</div>
+<a href="">다음을 시작페이지로</a>
+<h2>주요 서비스</h2>
+<ul>
+    <li><a href="">카페</a></li>
+    <li><a href="">메일</a></li>
+    <li><a href="">뉴스</a></li>
+</ul>
+<h2>전체 서비스</h2>
+<dl>
+    <dt>커뮤니케이션</dt>
+    <dd><a href="">카페</a></dd>
+    <dd><a href="">메일</a></dd>
+    <dd><a href="">블로그</a></dd>
+    <dd><a href="">티스토리</a></dd>
+    <dd><a href="">브런치</a></dd>
+</dl>
+<h2>오늘의 정보</h2>
+<h3>09. 18. (월)</h3>
+<ul>
+    <li>
+        <a href="">
+        날씨 서울시
+        <strong>맑음</strong>
+        <em>영상 25도</em>
+        25&deg;C
+        </a>
+    </li>
+    <li>
+        <a href="">
+        날씨 경기도
+        <strong>맑음</strong>
+        <em>영상 25도</em>
+        25&deg;C
+        </a>
+    </li>
+</ul>
+<!--
+
+    ※ 엔티티
+
+    1) &lt : <
+    2) &gt : >
+    3) &deg :°
+    4) &copy : ©
+
+
+    강조 : em(강조), strong(더 강한 강조), i
+
+
+    HTML : HyperText Markup Language
+
+    1) HyperText : 하이퍼링크(순차적이 아닌 접근)
+    2) markup : 글자를 묶는것(태그:요소)
+
+
+
+ 마크업시 의미와 구조에 맞게
+
+ -->
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery객체</title>
+</head>
+<body>
+<button>눌러봐!</button>
+<script src="js/jquery.js"></script>
+<script>
+    /*
+        jQuery함수가 있습니다.
+        축약해서 -> $ 로 사용
+     */
+
+
+    //이게 순수자바스크립트 요소객체
+    var btn = document.getElementsByTagName("button")[0];
+
+   // btn.style.color="red";
+
+    //개발자사이에서 jquery객체는 $를 붙여서 변수선언
+
+    //$btn인 변수를 선언하고
+    //jQuery함수를 호출하여 jquery객체를 얻어오고
+    //그 (레퍼런스)를 $btn변수에 대입
+    var $btn = $("button");
+
+
+
+    //이벤트
+    //이벤트타겟
+    //이벤트리스너
+    //이벤트핸들러
+
+    $btn.click(function () {
+        //this는 자바스크립트요소객체
+        console.log(this);
+
+        var $this = $(this);
+
+        $this.css("color","blue");
+
+        //$this는 jquery객체
+
+    });
+
+
+
+</script>
+</body>
+</html>

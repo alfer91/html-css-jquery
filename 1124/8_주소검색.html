@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>카카오맵</title>
+    <style>
+        #locationBox {
+            width:300px;
+            float: left;
+            border:1px solid #ddd;
+            margin-right:20px;
+            padding:10px;
+        }
+
+        #addressList li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="locationBox">
+    <input id="search" placeholder="주소입력"/>
+    <button id="searchBtn">검색</button>
+    <ul id="addressList">
+        <li><a href="">서울시 관악구</a></li>
+    </ul>
+</div>
+<div id="map" style="width:1000px;height:800px;"></div>
+<script type="text/template" id="liTmp">
+    <% _.each(list,function(address){ %>
+    <li data-lat='<%=address.y%>'
+        data-lng="<%=address.x%>"><%=address.address_name%></li>
+    <%})%>
+</script>
+<script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=634e35b1482881d7b12e11e43e49a84d&libraries=services"></script>
+<script>
+
+    var markers = [];
+
+    $("#addressList").on("click","li",function() {
+
+        markers.splice(0);
+
+        var lat = $(this).attr("data-lat");
+        var lng = $(this).attr("data-lng");
+
+        console.log(lat);
+        console.log(lng);
+
+        var latlng = new daum.maps.LatLng(lat, lng);
+
+        var marker = new daum.maps.Marker();
+
+        marker.setPosition(latlng);
+        map.setLevel(2);
+        map.setCenter(latlng);
+
+    });
+
+
+    $("#searchBtn").click(searchAddress);
+
+    var $search = $("#search");
+
+    $search.keyup(function(e){
+        if(e.keyCode==13) {
+            searchAddress();
+        }
+    });
+
+    var tmp = _.template($("#liTmp").html());
+
+    function searchAddress() {
+
+        geocoder.addressSearch($("#search").val(), function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면
+            if (status === daum.maps.services.Status.OK) {
+
+                $(markers).each(function () {
+                   this.setMap(null);
+                });
+
+                markers.splice(0);
+
+                var minLat = 0;
+                var maxLat = 0;
+                var minLng = 0;
+                var maxLng = 0;
+
+                $(result).each(function () {
+
+                    var lat = this.y;
+                    var lng = this.x;
+
+                    if(lat<minLat ||minLat==0) {
+                        minLat = lat;
+                    }
+                    if(lat>maxLat) {
+                        maxLat = lat;
+                    }
+                    if(lng<minLng ||minLng == 0) {
+                        minLng = lng;
+                    }
+                    if(lng>maxLng) {
+                        maxLng = lng;
+                    }
+                    //위도경도 객체
+                    var latlng = new daum.maps.LatLng(lat,lng);
+
+                    //마커 만들고 추가
+                    var marker = new daum.maps.Marker({
+                        position:latlng
+                    });
+
+                    markers.push(marker);
+
+                    //맵에 세팅
+                    marker.setMap(map);
+
+                });
+
+                var sw = new daum.maps.LatLng(minLat,minLng);
+                var ne = new daum.maps.LatLng(maxLat,maxLng);
+
+                var bounds = new daum.maps.LatLngBounds(sw,ne);
+
+                map.setBounds(bounds);
+
+                var markup = tmp({list:result});
+
+                $("#addressList").empty().append(markup);
+
+            }
+        });
+
+    }//searchAddress() end
+
+
+    var latlng = new daum.maps.LatLng(37.48094907957599, 126.95208479057423);
+
+    var container = document.getElementById('map');
+    var options = {
+        center: latlng,
+        level: 3
+    };
+
+    var map = new daum.maps.Map(container, options);
+
+    var geocoder = new daum.maps.services.Geocoder();
+
+    
+
+</script>
+</body>
+</html>

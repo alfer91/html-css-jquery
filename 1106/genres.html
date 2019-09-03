@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>영화 관리 서비스</title>
+    <link rel="icon" href="img/daum_movie.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/koverwatch.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <style>
+        #content {
+            text-align: center;
+        }
+
+        #genreInsertBox {
+            /*background: red;*/
+            padding:30px;
+            border-bottom:1px dotted #999;
+        }
+
+        #content h2 {
+            font-size:50px;
+            margin-bottom:20px;
+        }
+
+        #genreInsertBox div {
+            width:644px;
+            height:74px;
+            margin:auto;
+            /*positioning context 지정*/
+            position: relative;
+        }
+
+        #name {
+            width:580px;
+            height:50px;
+            font:40px 'Koverwatch',sans-serif;
+            padding:10px 30px;
+            border-radius: 100px;
+            border:2px solid #bbb;
+            outline: none;
+            color:#bbb;
+        }
+
+        #name:focus {
+            border-color:#00C6FF;
+            color:#00C6FF;
+        }
+
+        /* '+' : 다음요소 선택자 */
+        #name:focus+#insertBtn {
+            color:#00C6FF;
+        }
+
+        /* placeholder 색상 */
+        ::placeholder {
+            color:#bbb;
+        }
+
+        #name:focus::placeholder {
+            color:#00C6FF;
+        }
+
+        #insertBtn {
+            position: absolute;
+            width:50px;
+            height:50px;
+            background: transparent;
+            border:none;
+            font-size:36px;
+            right:15px;
+            top:12px;
+            cursor: pointer;
+            color:#bbb;
+        }
+
+        #genreListBox {
+            padding:30px;
+        }
+
+        #genreListBox ul {
+            /* float의 높이 */
+            overflow: hidden;
+            padding-top: 5px;
+        }
+
+        #genreListBox li {
+            width:243px;
+            height:98px;
+            background: #BDBDBD;
+            float: left;
+            /*margin-left:12px;*/
+            margin-right:20px;
+            margin-bottom:20px;
+            border:1px solid #9E9E9E;
+            transition: .1s ease;
+            font-size:44px;
+            position: relative;
+            line-height: 98px;
+        }
+        .btn_delete {
+            position: absolute;
+            right:4px;
+            top:4px;
+            font-size:26px;
+            width:40px;
+            height:40px;
+            border-radius: 40px;
+            background: #999;
+            line-height: 38px;
+            color:#fff;
+            cursor: pointer;
+            opacity: .1;
+            transition: .1s ease-out;
+        }
+
+        #genreListBox li:hover .btn_delete {
+            opacity: 1;
+        }
+
+        .btn_delete:hover {
+            background: #00C6FF;
+            color:#fff;
+        }
+
+        #genreListBox li:hover {
+            transform:translateY(-5px);
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+                        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        /* 4, 8, 12, 16....4n번째 li에 적용 */
+        #genreListBox li:nth-child(4n) {
+            margin:0;
+        }
+
+    </style>
+</head>
+<body>
+<!-- html5의 새로운 요소들 :
+header, footer, main, nav, article, aside, section.. -->
+<!-- auxiliary : 보조의 (줄임말) aux -->
+    <header id="header">
+        <div class="aux">
+            <h1 id="logo">
+                <a href="">
+                    <i class="fa fa-youtube-play"></i>
+                    <span>멋진 영화관리 앱</span>
+                </a>
+            </h1>
+            <nav id="gnb">
+                <h2 class="screen_out">주요 서비스</h2>
+                <ul>
+                    <li><a href="">
+                        <i class="fa fa-list-alt"></i>
+                        장르
+                    </a></li>
+                    <li><a href="">
+                        <i class="fa fa-film"></i>
+                        영화
+                    </a></li>
+                </ul>
+            </nav><!--//#gnb -->
+        </div><!--//.aux -->
+    </header><!--//#header -->
+    <main id="content">
+        <div class="aux">
+
+            <section id="genreInsertBox">
+                <h2>장르 입력</h2>
+                <form action="insertGenre.jsp" method="get">
+                    <fieldset>
+                        <legend class="screen_out">장르입력폼</legend>
+                        <div>
+                            <input type="text"
+                                   id="name"
+                                   name="name"
+                                   autofocus
+                                   autocomplete="off"
+                                   placeholder="장르를 입력하세요."/>
+                            <button title="장르 입력" id="insertBtn"
+                                    class="fa fa-keyboard-o"></button>
+                        </div>
+                    </fieldset>
+                </form>
+            </section><!-- //#genreInsertBox -->
+
+            <section id="genreListBox">
+                <h2>장르 목록</h2>
+                <ul>
+                    <li>
+                        <h3>멜로</h3>
+                        <!-- deleteBtn , btn_delete -->
+                        <a class="btn_delete" href="" title="삭제">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </li>
+                </ul>
+            </section><!--//#genreListBox -->
+
+        </div><!--//.aux -->
+    </main><!--//#content -->
+    <footer id="footer">
+        <div class="aux">
+            <div id="policy">
+                <h4 class="screen_out">정책 및 약관</h4>
+                <ul>
+                    <li><a href="">회사소개</a></li><!--
+                 --><li><a href="">광고</a></li><!--
+                 --><li><a href="">검색등록</a></li><!--
+                 --><li><a href="">제휴제안</a></li><!--
+                 --><li><a href="">이용약관</a></li><!--
+                 --><li><a href=""><strong>개인정보이용약관</strong></a></li><!--
+                 --><li><a href="">청소년보호정책</a></li><!--
+                 --><li><a href="">고객센터</a></li>
+                </ul>
+            </div><!-- //policy  -->
+            <address>&copy; 2017 <a href="">jbm.com</a></address>
+        </div><!--//.aux -->
+    </footer><!--//#footer -->
+</body>
+</html>

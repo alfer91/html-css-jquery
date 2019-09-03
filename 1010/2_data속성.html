@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>data-속성</title>
+</head>
+<body>
+<!--
+ 요소안에 data를 넣는 경우가 많았습니다.
+ HTML5에서는 'data-' 속성을 만들었습니다.(웹표준)
+ 예) 이름 : data-name="아이유"
+     색상 : data-color="#00bfff"
+     아이디 : data-id="pilguking"
+
+
+ -->
+    <button id="blueBtn" data-color="#00bfff">파랑</button>
+    <button id="redBtn" data-color="#F44336">빨강</button>
+<script src="js/jquery.js"></script>
+<script>
+    $("button").click(function () {
+
+        //우리가 클릭한 그버튼의
+        //data-color속성의 값을 얻어와서
+        var color = $(this).attr("data-color");
+
+        //body요소의 background속성의 값으로 세팅
+        $("body").css("background",color);
+
+    });//click() end
+</script>
+</body>
+</html>

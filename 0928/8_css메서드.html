@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>css메서드</title>
+    <style>
+        #box {
+            width:400px;
+            height:300px;
+            border:1px solid #424242;
+        }
+
+    </style>
+</head>
+<body>
+<p>
+    <button>뒷배경 색상 입력!</button>
+    <button>height 얻기!</button>
+    <button>여러개의 속성 한번에 세팅</button>
+</p>
+<div id="box"></div>
+<script src="js/jquery.js"></script>
+<script>
+
+
+    /*
+        일반적인 프로그래밍언어는
+        getter와 setter가 각각 두개씩
+
+        하지만 jquery는 getter, setter가 한개로 처리
+
+        css메서드
+
+        1) 1개의 속성 setter : css(속성명,속성값)
+        2) 속성값 getter : css(속성명)
+        3) 여러개의 속성 setter : css(객체)
+
+        인덱스는 0번지부터!!
+        겟터는 변수에 대입해라!!
+
+     */
+
+
+
+    //1) 첫번째 버튼을 선택한 후
+    // 클릭이벤트리스너를 붙이고 이벤트핸들러를 작성
+    $("button:eq(0)").click(function () {
+
+        //2) #box를 선택하고 뒷배경색을 빨간색으로
+        $("#box").css("background","#E91E63");
+
+    });//첫번째 버튼 click() end
+
+    //3) 두번째 버튼을 선택하고
+    //click이벤트리스너를 붙이고 이벤트핸들러를 작성
+    $("button:eq(1)").click(function () {
+
+        //4) id가 box인 요소를 선택하고
+        // height값을 얻어온 후
+        //height 변수에 대입
+        var height  = $("#box").css("height");
+
+        //5) alert에 height값을 출력
+        alert(height);
+
+    });//두번째 버튼 click() end
+
+
+
+    //3번째 버튼을 클릭하면
+    //id가 box인 요소의
+    //width : 1000
+    //height : 576
+    //border : 40px dotted orange
+    //background:url(img/b_ryan.png)으로
+    $("button:eq(2)").click(function () {
+
+       $("#box").css({
+           "width":1000,
+           "height":576,
+           "border":"40px dotted #424242",
+           "background":"url(img/b_ryan.png)"
+       });
+
+
+
+    });//3번째 버튼 click() end
+
+
+</script>
+</body>
+</html>

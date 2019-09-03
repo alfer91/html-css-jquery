@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>2단 레이아웃 제작</title>
+		<!-- 폰트어썸 -->
+		<link rel="stylesheet"
+			  href="css/font-awesome.min.css" />
+		<!-- 애플사이트 폰트 -->
+		<link rel="stylesheet"
+			  href="css/apple.css" />
+		<!-- 브라우저가 가진 css 제거 -->
+		<link rel="stylesheet"
+			  href="css/reset.css" />
+		<style>
+			body {
+				font-family: "SF Pro Display",
+				             "SF Pro KR",
+			                 sans-serif;
+			}
+			#wrap {
+				width:1000px;
+				/*background: red;*/
+				margin:auto;
+				text-align: center;
+				font-size:40px;
+				font-weight:600;
+				/*background: silver;*/
+				border:2px dotted #F50057;
+			}
+
+			#header {
+				/*background: blue;*/
+				width:1000px;
+				height:98px;
+				border-bottom:2px dotted #F50057;
+			}
+
+			#header,#footer {
+				line-height: 98px;
+			}
+
+			#content {
+				/*background: green;*/
+				width:698px;
+				height:500px;
+				/* 블록레벨의 수평정렬 */
+				float: left;
+				line-height: 500px;
+				border-right:2px dotted #F50057;
+			}
+
+			#sideBar {
+				/*background: orange;*/
+				width:300px;
+				height:250px;
+				/* 블록레벨의 수평정렬 */
+				float: left;
+				line-height: 250px;
+			}
+
+			#footer {
+				width:1000px;
+				height:98px;
+				/*background: silver;*/
+				clear: both;
+				font-size:16px;
+				border-top:2px dotted #F50057;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<h1><i class="fa fa-hand-lizard-o"></i> 필구의 웹서비스</h1>
+			</div><!-- //#header -->
+			<div id="content">
+				<h2><i class="fa fa-hand-spock-o"></i> 컨텐츠 영역</h2>
+			</div><!-- //#content -->
+			<div id="sideBar">
+				<h2><i class="fa fa-hand-scissors-o"></i> 사이드바 영역</h2>
+			</div><!-- //#sideBar -->
+			<div id="footer">
+				&copy; 2017 jbm.com
+			</div><!-- //#footer -->
+		</div><!-- //#wrap -->
+	</body>
+</html>
+
+
+
+
+

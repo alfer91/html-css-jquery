@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>ex2</title>
+		<link href="img/daum_movie.ico"
+			  rel="shortcut icon"/>
+		<link rel="stylesheet"
+			  href="css/font-awesome.min.css" />
+		<style>
+			/* 테이블에 border 지정 */
+			table {
+				/*
+
+				셀간의 간격을 없애는 방법
+				collapse : 무너지다.
+
+				 */
+				border-collapse: collapse;
+			}
+			th, td {
+				border:2px solid #424242;
+				padding:10px 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>영화사이트</h1>
+		<h2>영화검색</h2>
+		<!-- accept-charset : 서버로 보낼때 인코딩 -->
+		<form accept-charset="EUC-KR"
+				action="http://movie.naver.com/movie/search/result.nhn" method="get">
+			<fieldset>
+				<legend>영화검색폼</legend>
+				<label> 검색</label>
+				<input name="query"/>
+				<button><i class="fa fa-search" aria-hidden="true"></i> 검색</button>
+			</fieldset>
+		</form>
+		<table>
+			<caption>박스오피스</caption>
+
+			<thead>
+				<tr>
+					<th scope="col">포스터</th>
+					<th scope="col">제목</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<img src="poster/poster1.jpg"
+							 width="100"
+							 alt="아이캔스피크 포스트"/>
+					</td>
+					<th scope="row">아이캔스피크</th>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						영화전산망
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+</html>

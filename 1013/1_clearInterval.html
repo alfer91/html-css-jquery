@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>clearInterval</title>
+</head>
+<body>
+    <h1>??</h1>
+    <p>
+        <button>시작</button>
+        <button>멈춤</button>
+    </p>
+<script src="js/jquery.js"></script>
+<script>
+    var no = 0;
+    var idx = 0;
+
+    //setInterval()의 리턴값이 해당 interval의 id값 : 정수
+
+
+//1번째버튼을 클릭했을때
+    $("button").eq(0).click(function () {
+
+        $(this).attr("disabled","disabled");
+
+        //1000분의 1초마다
+        idx = setInterval(function () {
+
+            //no변수의 값을 1증가 시킨후
+            //h1요소의 글자로 세팅
+            $("h1").text(++no);
+
+        },1);//setInterval() end
+
+        //alert(idx);
+
+    });//click() end
+
+    $("button:eq(1)").click(function () {
+
+        $("button:eq(0)").removeAttr("disabled");
+
+       clearInterval(idx);
+
+    });//1번째 버튼 click() end
+
+</script>
+</body>
+</html>

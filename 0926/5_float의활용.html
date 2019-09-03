@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>float의 활용</title>
+    <style>
+
+        #box {
+            width:300px;
+            overflow: hidden;
+            border: 1px solid purple;
+        }
+
+        .box {
+            width:100px;
+            height:100px;
+            /*
+            수평레이아웃을 지정할 요소들에게
+            float:left지정하면 됩니다.
+
+            단, 공간을 차지하지 않기 때문에
+            부모의 height문제가 생김
+
+            1) 부모의 height를 고정으로 지정
+            2) 부모에 overflow를 지정해도 됨
+            3) 형제요소에 clear:both 지정
+            4) ::after에 clear :both 지정
+
+            */
+            float: left;
+        }
+        #red {
+            background: red;
+
+        }
+        #green {background: green}
+        #blue {background: blue}
+        #ryan {
+            width:100px;
+            height:100px;
+            background: url(img/ryan.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="red" class="box"></div>
+        <div id="green" class="box"></div>
+        <div id="blue" class="box"></div>
+    </div>
+    <div id="ryan"></div>
+</body>
+</html>

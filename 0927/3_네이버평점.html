@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>네이버 평점</title>
+    <style>
+        #gradeBox {
+            width:120px;
+            height:20px;
+            background-image:url(img/sp_ico.png);
+            background-position: 0 108px;
+            border:1px solid #424242;
+        }
+
+        #gradeOn {
+            width:0px;
+            height:20px;
+            background: url(img/sp_ico.png);
+            background-position:0 83px;
+            /*IR(이미지대치)기법*/
+            text-indent: -7777px;
+            overflow: hidden;
+            transition: .2s ease-in .1s;
+        }
+
+        #gradeBox:hover #gradeOn {
+            width:120px;
+            transition: .1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="gradeBox">
+        <div id="gradeOn">10점</div>
+    </div>
+</body>
+</html>

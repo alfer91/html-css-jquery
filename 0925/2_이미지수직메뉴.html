@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 수직 메뉴</title>
+    <style>
+
+        /*
+            마크업상에는 존재하기 때문에
+            웹접근성, 검색엔진등 시멘틱웹에서는
+            작동되지만 CSS를 적용하면
+            눈에는 보이지 않게 하는 방법
+        */
+        .screen_out {
+            width:0;
+            height:0;
+            line-height: 0;
+            position: absolute;
+            text-indent:-9999px;
+            overflow: hidden;
+        }
+
+        body {
+            margin:0;
+        }
+
+        #nav {
+            width:300px;
+            height:400px;
+            background: red;
+            position: fixed;
+            left:50%;
+            top:50%;
+            margin:-200px 0 0 -150px;
+        }
+
+        #nav ul {
+            list-style: none;
+            background: blue;
+            margin:0;
+            padding:0;
+        }
+        #nav li {
+            width:300px;
+            height:100px;
+            background: yellow;
+        }
+        #nav a {
+            width:300px;
+            height:100px;
+            /*
+            인라인레벨은 width,height적용이 안됨
+             그래서 블록레벨로 변경
+            */
+            display: block;
+            transition: .2s ease-out;
+
+            /*
+
+                CSS를 제거했을때는
+                글자가 보여집니다.(웹접근성 및 시멘틱웹)
+                하지만 CSS를 적용하면
+                글자는 보이지 않고
+                이미지로 대치하는 방법
+                IR(Image Replacement)기법
+
+                - 뒷배경이미지 깔고,
+                  글자 저멀리 보내고(text-indent)
+                  부모에서 벗어난 글자를 숨김
+                  (overflow)
+
+
+            */
+            text-indent: -9999px;
+            overflow: hidden;
+            /*color:transparent;*/
+
+        }
+        /*
+            하나의 이미지를 나눠서 쓰는 방법
+            IS(Image Sprite)기법
+
+            장점 : 나눌때보다 용량도 작고, 서버 부담도
+                   적고, 깜빡임도 없고
+
+        */
+
+        #nav a:hover {
+            background-position: 0 -100px;
+        }
+
+        #nav a:active {
+            /* transition제거 */
+            transition: none;
+            background-position: 0 -200px;
+        }
+
+
+
+        .blog>a {
+            background-image: url(img/blog_a.gif);
+        }
+        .cafe>a {
+            background-image: url(img/cafe_a.gif);
+        }
+        .mail>a {
+            background-image: url(img/mail_a.gif);
+        }
+        .kin>a {
+            background-image: url(img/kin_a.gif);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <h2 class="screen_out">주요 서비스</h2>
+        <ul>
+            <!-- a요소 링크를 클릭해도 리프레시
+             안되게 하려면 내부링크인 "#"을 씁니다. -->
+            <li class="blog"><a href="#">블로그</a></li>
+            <li class="cafe"><a href="#">카 페</a></li>
+            <li class="mail"><a href="#">메 일</a></li>
+            <li class="kin"><a href="#">지식in</a></li>
+        </ul>
+    </div><!--//#nav -->
+</body>
+</html>

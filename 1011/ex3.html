@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>ex3</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/apple.css" />
+    <style>
+        body {
+            font-family: 'SF Pro KR', sans-serif;
+            text-align: center;
+            background:#fff;
+        }
+
+        #txt {
+            font-size:70px;
+            color:#424242;
+            margin:20px;
+            font-weight:600;
+            transition:.2s ease;
+        }
+
+        #txt.click {
+            transform:scale(1.5);
+            text-shadow:0 0 10px #424242;
+            color:transparent;
+        }
+
+        #btn {
+            background: #FF4081;
+            color:#fff;
+            padding:10px 15px;
+            border:none;
+            font:600 30px 'SF Pro KR',sans-serif;
+            cursor: pointer;
+            transition:.2s ease;
+        }
+        #btn:hover {
+            background: #F50057;
+            box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="txt">버튼을 눌러보세요.</h1>
+    <button id="btn">난 버튼</button>
+<script src="js/jquery.js"></script>
+<script>
+
+    var $btn = $("#btn");
+
+    $btn.click(function () {
+
+        $("#txt").toggleClass("click");
+
+        //#txt를 선택하여 jquery객체를 얻어오고
+        //그 jquery객체의 css를 변경합니다.
+        //scale,text-shadow,color변경
+
+       // $("#txt").css({
+       //    transform:"scale(1.5)",
+       //     color:"transparent",
+       //     "text-shadow":"0 0 10px #424242"
+       // });
+
+    });//버튼 click() end
+
+
+</script>
+</body>
+</html>

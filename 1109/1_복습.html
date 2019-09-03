@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>복습</title>
+</head>
+<body>
+    <button>눌러보세요</button>
+    <h1>영화목록</h1>
+    <ul>
+        <li>
+            <h2>토르</h2>
+            <a href="deleteMovie.jsp" data-name="토르"
+               class="delete">삭제</a>
+        </li>
+        <li>
+            <h2>침묵</h2>
+            <a href="deleteMovie.jsp" data-name="침묵"
+               class="delete">삭제</a>
+        </li>
+    </ul>
+    <script src="js/jquery.js"></script>
+    <script>
+
+        $(".delete").click(function (e) {
+
+            //그요소의 조상중에 li선택후 자손들중에 h2를 선택후 글자 얻기
+            //var name = $(this).parents("li").find("h2").text();
+
+            //jquery
+            //var name = $(this).attr("data-name");
+
+            //HTML5 순수 자바스크립트 API
+            var name = this.dataset.name;
+
+            var flag = confirm("영화 '"+name+"'을(를) 삭제하시겠습니까?");
+
+            if(!flag) {//취소를 눌렀을때
+                e.preventDefault();
+            }//if end
+
+        });//.delete click() end
+
+        $("button").click(function () {
+           alert("test");
+        });//button click() end
+    </script>
+</body>
+</html>

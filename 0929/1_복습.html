@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1 복습</title>
+    <style>
+        #ryan {
+            position: relative;
+            left:0;
+            transition:.2s ease;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <button>move!</button>
+</p>
+<img id="ryan" src="img/001.gif" width="200" />
+<!-- jquery import -->
+<script src="js/jquery.js"></script>
+<script>
+
+    //전역변수 x를 선언하고 0을 대입(0으로 초기화)
+    var x = 0;
+
+    //1) button요소를 선택하고 click이벤트리스너를 붙이고
+    // 이벤트핸들러 작성
+    $('button').click(function () {
+//        alert("test");
+
+//        x = x + 50;
+        x += 50;
+
+        //2) 아이디가 ryan인 img요소를 선택하고
+        $("#ryan").css("left",x);
+
+    });//click() end
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>속성관련 메서드</title>
+
+</head>
+<body>
+    <p>
+        <button>src변경</button>
+        <button>alt얻기</button>
+        <button>여러속성 한 번에 변경</button>
+    </p>
+    <img src="img/k1.jpg"
+         width="400"
+         title="라이언"
+         alt="라이언"/>
+<!-- jquery import -->
+<script src="js/jquery.js"></script>
+<script>
+
+    /*
+        css메서드 : css의 속성에 대한 메서드
+        attr메서드 : 요소의 속성관련 메서드
+
+        용법
+
+        1) attr(속성명, 속성값) : setter(세터)
+        2) attr(속성명) : getter(겟터)
+        3) attr(객체) : 여러속성을 세팅하는 세터
+
+        객체란 속성들의 묶음
+        {name:"아이유",height:160, weight:45}
+
+     */
+
+
+
+    $('button:eq(0)').click(function () {
+
+        //img요소를 선택하고 src속성의 값을
+        //img/k8.jpg로 변경(세팅)한다.
+
+        $('img').attr("src","img/k8.jpg");
+
+    });//1번째 버튼 클릭 end
+
+    //두번째 버튼을 누르면
+    $("button:eq(1)").click(function () {
+
+        //img요소를 선택하고
+        //alt속성값을 얻어옴
+        var src = $("img").attr("src");
+
+        alert("현재 이미지는 : "+src);
+        //겟터는 변수로 받아라!
+
+    });//2번째 버튼 click() end
+
+
+    //3번째 버튼을 누르면
+    //img의 src가
+
+    $("button:eq(2)").click(function () {
+
+//        $("img").attr("src","img/k3.jpg");
+//        $("img").attr("alt","어피치");
+//        $("img").attr("title","어피치");
+//        $("img").attr("width",640);
+
+        $("img").attr({
+            src:"img/k3.jpg",
+            alt:'어피치',
+            title:"어피치",
+            width:640
+        });
+
+    });//click() end
+
+
+</script>
+</body>
+</html>

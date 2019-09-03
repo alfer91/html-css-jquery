@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>한글 웹폰트 클라우드</title>
+    <!-- https://fonts.google.com/earlyaccess -->
+    <!-- 1) 웹폰트 css를 link로 -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/earlyaccess/hanna.css"/>
+    <style>
+        /* import는 여기 */
+        @import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+        h1 {
+            font-size:80px;
+        }
+        #hanna {
+            /* 폰트(폰트패밀리) 지정*/
+            font-family: 'Hanna', sans-serif;
+            /* 폰트두께 지정 */
+            font-weight: normal;
+            color:#F44336;
+        }
+
+        #nanumM {
+            font-family: 'Nanum Myeongjo', serif;
+            color:#673AB7;
+            text-shadow:0 0 10px #424242;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hanna">자바기반의 빅데이터 / 머신러닝 SW개발자과정</h1>
+    <h1 id="nanumM">자바기반의 빅데이터 / 머신러닝 SW개발자과정</h1>
+</body>
+</html>

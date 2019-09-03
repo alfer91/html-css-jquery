@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>복습</title>
+		<link rel="stylesheet" href="css/notosanskr.css"/>
+		<link rel="stylesheet" href="css/font-awesome.min.css"/>
+		<style>
+			body {
+				font-family: 'Noto Sans KR',sans-serif;
+				margin:20px;
+			}
+			
+			#tab {
+				background:#90CAF9;
+				width:200px;
+				height:40px;
+				color:#424242;
+				text-align: center;
+				line-height: 40px;
+				border:2px solid #2196F3;
+				border-bottom:none;
+				border-radius: 20px 20px 0 0;
+				margin:0;
+				
+			}
+			
+			/*
+			 * 박스모델의 너비,높이를 400,200
+			 */
+			#box {
+				width:356px;
+				height:156px;
+				background:#64B5F6;
+				border:2px solid #1976D2;
+				margin:0;
+				padding: 20px;
+				color:#333;
+				position:relative;
+				border-radius: 0 20px 20px 0px;
+			}
+
+			#triangle {
+				width:0;
+				height:0;
+				border-right:60px solid transparent;
+				border-bottom:80px solid #009688;
+				border-left:60px solid transparent;
+			}
+			
+			#profileBox {
+				width:160px;
+				height:200px;
+				text-align: center;
+				padding: 15px;
+				border:5px solid #424242;
+				box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+				            0 17px 50px 0 rgba(0, 0, 0, 0.19);
+				position:fixed;
+				left:50%;
+				top:50%;
+				margin-left:-100px;
+				margin-top:-120px;
+				background:#fff;
+							
+			}
+			
+			#profileBox img{
+				width:150px;
+				height:150px;
+				border-radius: 80px;
+				border:5px solid #424242;
+			}
+			
+			#profileBox h3 {
+				margin:0;	
+				margin-top:5px;
+				font-size:22px;
+			}
+
+			.fa-user-circle {
+				color:#00BCD4;
+				font-size:28px;
+			}
+			#profileBox h3 {
+				color:#673AB7;
+			}
+
+			#monster {
+				position: fixed;
+				right:10px;
+				bottom:10px;
+			}
+			#ryan {
+				position: absolute;
+				left:10px;
+				bottom:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>복습</h1>
+		<h2>텝모양만들기</h2>
+		<h3 id="tab">텝1</h3>
+		<p id="box">
+		내용이 쭉쭉 들어갑니다.
+			<img id="ryan" src="img/002.gif" width="100" />
+		</p>
+		<hr />
+		<h2>삼각형만들기</h2>
+		<div id="triangle"></div>
+		<hr/>
+		<h2>프로필 만들기</h2>
+		<div id="profileBox">
+			<img src="img/irene.jpeg" alt="아이린"/>
+			<h3><i class="fa fa-user-circle"></i> 아이린</h3>
+		</div>
+		<img id="monster" src="img/monster.png" />
+	</body>
+</html>
+
+
+

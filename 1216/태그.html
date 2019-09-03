@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>태그 예제</title>
+    <link rel="stylesheet" href="css/notosanskr.css"/>
+    <style>
+        #content {
+            width:500px;
+            height:500px;
+            border:1px solid #424242;
+            color:#999;
+            font:200 16px 'Noto Sans KR',sans-serif;
+
+        }
+        #content div {
+            background: blue;
+            display: inline;
+        }
+        #content .tag {
+            background: red;
+            padding:2px;
+            font-weight:500;
+            color:#666;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+<div id="content" contenteditable="true"></div>
+<form id="form" method="get" action="test">
+
+</form>
+<script src="js/jquery.js"></script>
+<script>
+    var $content = $("#content");
+    $content.on("keyup",function (e) {
+
+        if(e.keyCode==51) {
+
+            var success =  document.execCommand('formatblock', false, "div");
+            document.execCommand('delete');
+            console.log(success);
+            //$content.focus();
+
+            if(success) {
+                document.execCommand('insertHTML', false, "<div class='tag'>#</div>");
+                //$content.append("<span>#</span>");
+
+            }
+        }else if(e.keyCode==51) {
+
+        }
+
+    });
+</script>
+</body>
+</html>

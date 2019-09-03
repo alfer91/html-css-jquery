@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>영화검색</title>
+</head>
+<body>
+    <h1>영화검색</h1>
+    <form id="form">
+        <input name="name"
+               placeholder="영화명"
+               id="name"/>
+        <button>검색</button>
+    </form>
+    <h2>영화목록</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>제목</th>
+                <th>대표장르</th>
+                <th>개봉일</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+<script src="js/jquery.js"></script>
+<script>
+
+    $("#form").submit(function () {
+
+        //영화이름을 얻어옵니다.
+        var name = $("#name").val().trim();
+
+        $.ajax({
+            url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json",
+            data:{
+                key:"430156241533f1d058c603178cc3ca0e",
+                movieNm:name
+            },//서버로 보낼 파라미터
+            error:function(){
+                alert("에러!!");
+            },
+            success:function(data) {
+
+                //data는 객체(속성 : movieListResult)
+
+                //data.movieListResult는 객체
+                //totCnt,source,movieList 속성 3개
+
+                //이게 배열 :data.movieListResult.movieList;
+                var movies = data.movieListResult.movieList;
+
+                console.log(movies);
+
+                $(movies).each(function() {
+                    var $tr = $('<tr>');
+                    var $td1 = $("<td>").text(this.movieNm);
+                    var $td2 = $("<td>").text(this.repGenreNm);
+                    var $td3 = $("<td>").text(this.openDt);
+
+                    $tr.append($td1,$td2,$td3).appendTo("tbody");
+
+                });
+            }
+        });
+
+        //페이지 이동안함
+        return false;
+    });
+</script>
+</body>
+</html>

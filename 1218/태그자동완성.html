@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>태그 자동완성</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <style>
+        #tagBox {
+            width:700px;
+            min-height:30px;
+            border:none;
+            padding: 5px;
+        }
+        .tag {
+            line-height:30px;
+            background:transparent;
+            float: left;
+            margin-right:5px;
+            border-radius: 15px;
+            padding-left:5px;
+        }
+        #inputTag {
+            float: left;
+            width:100px;
+            height:27px;
+            border-radius:14px;
+            line-height:30px;
+            border:1px solid #424242;
+            outline: none;
+            padding-left:5px;
+        }
+        .delete{
+            background: transparent;
+            border:0;
+            outline: none;
+            cursor:pointer;
+            font-size: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="tagBox">
+    <input id="inputTag">
+</div>
+<form id="write"></form>
+<script src="js/jquery.js"></script>
+<script>
+
+    $("#inputTag").keydown(function (e) {
+        //console.log(e.keyCode==13);
+
+        console.log(e.keyCode);
+        //e.keyCode==13 ||
+        if(e.keyCode==13 || e.keyCode==32) {
+            console.log("tag등록");
+            //alert("ddd");
+            var val = $(this).val();
+            $("<input type='hidden' name='tag' value='"+val+"'>").prependTo("#write");
+            $("<div class=\"tag\">#"+val+"<button class=\"delete\"><i class=\"fa fa-times\"></i></button></div>").prependTo("#tagBox");
+            $(this).val("");
+            return false;
+        }else{
+            console.log("아무것도 아님");
+        }
+
+    });
+
+    $("#tagBox").on("click",".delete",function () {
+        $(this).parents(".tag").remove();
+
+    });
+
+</script>
+</body>
+</html>

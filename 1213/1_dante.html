@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>단테 에디터의 사용</title>
+    <link rel="stylesheet" href="css/dante-editor.css" />
+    <link rel="stylesheet" href="css/notosanskr.css" />
+    <style>
+        #editor {
+            width:800px;
+            margin:auto;
+            border:1px solid #424242;
+            font:200 20px 'Noto Sans KR', sans-serif;
+        }
+        .graf--p,
+        .graf--blockquote,
+        .graf--pullquote {
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body>
+<div id="editor"></div>
+<!-- dante는 jquery, underscore, sanitize에 의존적 -->
+<script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/sanitize.js"></script>
+<script src="js/dante-editor.js"></script>
+<script>
+
+    //단테는 사진은 실시간 ajax로 업로드
+    //내용은 마크업(p,img,div...)형태로 특정시간마다
+    //갱신되서 서버로 넘겨줌
+
+    var editor = new Dante.Editor({
+        el:"#editor"//단테가 될 요소
+        ,disable_title :true //타이틀 제거
+        ,body_placeholder:"여행기를 등록하세요."
+        ,base_widgets:["uploader"]
+        // ,debug:true
+        // upload_url:"ajax/upload.json",//파일업로드
+        // store_url:"ajax/save.json"//내용보내는 주소
+
+    });
+
+    editor.start();
+
+
+</script>
+</body>
+</html>

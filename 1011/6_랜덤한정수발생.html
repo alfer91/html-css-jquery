@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>랜덤한 정수 발생</title>
+    <style>
+        /*
+
+        body요소를 브라우저 전체크기로 하고 싶으면
+
+         */
+        html {
+            width:100%;
+            height:100%;
+        }
+        body {
+            margin:0;
+            width:100%;
+            height:100%;
+            cursor: crosshair;
+            transition:.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+<script src="js/jquery.js"></script>
+<script>
+
+    $("body").on("click",function () {
+
+        //난수발생 : Math.random() 메서드를 이용
+        //0.000000... 부터 0.9999999...까지
+
+        //공식
+        // Math.floor(Math.random()*갯수)+시작수
+
+        //5~10까지 랜덤한 정수
+        //var ran = Math.floor(Math.random()*6)+5;
+
+        var r = Math.floor(Math.random()*256);//0~255까지 랜덤한 수
+        var g = Math.floor(Math.random()*256);//0~255까지 랜덤한 수
+        var b = Math.floor(Math.random()*256);//0~255까지 랜덤한 수
+
+        var color = "rgb("+r+","+g+","+b+")";
+
+        $("body").css("background",color);
+
+
+    });//body click() end
+
+</script>
+</body>
+</html>

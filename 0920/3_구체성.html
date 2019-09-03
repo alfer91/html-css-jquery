@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>구체성</title>
+    <style>
+        /* 0 0 0 1 */
+        body {
+            /* 글자 : 상속됨
+                뒷배경,박스모델 : 상속안됨
+             */
+            color:red;
+        }
+
+        /* 0 1 1 1 */
+        h1#h1.h1 {
+            color:purple;
+        }
+
+        /* 0 1 1 2 */
+        html body #h1.h1 {
+            color:green;
+        }
+
+        /* 0 0 0 1 */
+        h1 {
+            color:blue;
+        }
+
+
+
+        /*
+            구체성이란?
+            한 요소를 두개이상의 선택자가 선택하여
+            한 개의 속성의 값을 두개이상
+            다르게 선언하였을때
+            과연 무슨 속성값이 적용되는지 판단하는 성질
+
+            표현
+
+            (인라인) (id) (class) (요소)
+                0     0      0      0
+
+
+
+        */
+    </style>
+</head>
+<body>
+    <h1 id="h1" class="h1">나는 무슨색?</h1>
+</body>
+</html>

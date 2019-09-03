@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>주사위 3D</title>
+    <style>
+        #wrap {
+            width:200px;
+            height:200px;
+            position: fixed;
+            left:50%;
+            top:50%;
+            margin:-100px 0 0 -100px;
+            perspective: 300px;
+        }
+
+        #cube {
+            width:200px;
+            height:200px;
+            border:1px dotted #000;
+            position: absolute;
+            animation:roll 2s linear infinite;
+            transform-style: preserve-3d;
+
+            /*
+                자식들이 실제로 3D 튀어나오게
+                하려면
+                transform-style속성을 지정해야 합니다.
+                기본값 : flat(평평한)
+
+            */
+
+        }
+
+        @keyframes  roll{
+            from {transform:rotateX(0deg) rotateY(0deg)}
+            to {transform:rotateX(360deg) rotateY(360deg)}
+        }
+
+        .side {
+            width:200px;
+            height:200px;
+            text-align: center;
+            color:#fff;
+            font-size:150px;
+            font-weight: bold;
+            opacity: .5;
+            position: absolute;
+        }
+        .side:nth-child(1) {
+            background: red;
+            transform:rotateY(0deg) translateZ(100px);
+        }
+        .side:nth-child(2) {
+            background: orange;
+            transform:rotateY(90deg) translateZ(100px);
+        }
+        .side:nth-child(3) {
+            background: green;
+            transform:rotateY(180deg) translateZ(100px);
+        }
+        .side:nth-child(4) {
+            background: blue;
+            transform:rotateY(270deg) translateZ(100px);
+        }
+        .side:nth-child(5) {
+            background: navy;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .side:nth-child(6) {
+            background: purple;
+            transform: rotateX(270deg) translateZ(100px);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="cube">
+            <div class="side">1</div>
+            <div class="side">2</div>
+            <div class="side">3</div>
+            <div class="side">4</div>
+            <div class="side">5</div>
+            <div class="side">6</div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>댓글 쓰기</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href='css/notoserif.css' rel='stylesheet' type='text/css'/>
+    <style>
+        html {
+            overflow-y: scroll;
+        }
+        body {
+            font-family: 'Noto Serif KR', serif;
+            background: #F6F6F6;
+        }
+        #replyBox {
+            width:1000px;
+            margin:20px auto 20px auto;
+            border:6px solid #00E676;
+
+        }
+        #replyBox h3 {
+            text-align: center;
+            font-size:26px;
+            margin:16px;
+            font-weight:bold;
+            color:#00C853;
+        }
+        #formBox {
+            width: 900px;
+            height: 110px;
+            margin:20px auto;
+            position: relative;
+        }
+        #contentsField {
+            width: 760px;
+            min-height: 90px;
+            padding: 10px;
+            border: none;
+            color: #333;
+            resize: none;
+            border:1px solid #9E9E9E;
+            font:100 19px "Noto Serif KR", "나눔고딕", nanumGothic, "맑은 고딕", malgunGothic, "돋움", dotum, sans-serif;
+        }
+
+        #contentsField:focus {
+            border-color:#00E676;
+            outline: 3px solid #00E676;
+        }
+
+        #formBox #writeBtn {
+            position: absolute;
+            right: 0px;
+            width: 110px;
+            height: 110px;
+            padding: 0;
+        }
+
+
+        #replyListBox {
+            width: 900px;
+            margin: 20px auto;
+        }
+
+        #replyListBox ul {
+            border-top: 1px solid #9E9E9E;
+        }
+
+        #replyListBox li {
+            padding: 10px;
+            min-height: 140px;
+            border-bottom: 2px dotted #bbb;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        #replyListBox .box_reply {
+            width: 730px;
+            min-height: 100px;
+            /* 포지셔닝 컨텍스트 지정 */
+            position: relative;
+            padding-left: 20px;
+            padding-top: 50px;
+            left: 130px;
+            top: 0;
+        }
+
+        #replyListBox .delete {
+            font-size: 18px;
+            font-weight: 500;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #aaa;
+            color: #fff;
+            text-decoration: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            text-align: center;
+            padding: 0;
+            line-height: 29px;
+        }
+
+        #replyListBox .delete:hover {
+            background: #00E676;
+        }
+
+        #replyListBox .comments {
+            width: 680px;
+            min-height: 70px;
+            background: #00E676;
+            border-radius: 0 12px 12px 12px;
+            padding: 10px;
+            position: relative;
+            color: #424242;
+            white-space: pre-wrap;
+            /* 단어를 브레이크 */
+            word-wrap: break-word;
+        }
+
+        #replyListBox .box_reply .time {
+            top: 26px;
+            left: 20px;
+            position: absolute;
+            font-size: 15px;
+        }
+
+        #replyListBox .comments::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #00E676;
+        }
+        .card_user {
+            position: absolute;
+            height:120px;
+            text-align: center;
+            top:10px;
+            left:10px;
+        }
+        .card_user img {
+            border-radius: 50px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        .card_user strong {
+            position: absolute;
+            width:100px;
+            left:0;
+            font-weight:900;
+            color:#9E9E9E;
+            bottom:0;
+            font-size:16px;
+        }
+
+        .no_reply {
+            text-align: center;
+            font-size: 22px;
+            line-height: 140px;
+            color:#424242;
+        }
+        .btn {
+            border:0;
+            margin:0;
+            background:#4D525A;
+            color:#fff;
+            text-decoration: none;
+            font-weight: 200;
+            box-sizing: content-box;
+            display: inline-block;
+            font-size:18px;
+        }
+
+        button.btn {
+            cursor: pointer;
+            font:900 19px "Noto Serif KR", "나눔고딕", nanumGothic, "맑은 고딕", malgunGothic, "돋움", dotum, sans-serif;
+        }
+
+        .btn:hover {
+            background:#00C853;
+            color:#fff;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            font-weight:900;
+        }
+
+        /* firefox가 가진 버튼의 크기를 없애줌 */
+        button::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+        #loader {
+            width:100%;
+            height:100%;
+            left:0;
+            top:0;
+            position: fixed;
+            background: rgba(255, 255, 255, .8) url(img/loader.gif) no-repeat center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="replyBox">
+    <h3><i class="fa fa-comment"></i> 댓글 0개</h3>
+    <div id="formBox">
+        <form id="commentForm" action="" method="get">
+            <textarea maxlength="140" id="contentsField" placeholder="새 글을 입력합니다."></textarea>
+            <button id="writeBtn" class="btn">올리기</button>
+        </form>
+    </div><!--//#formBox-->
+    <p class="no_reply">
+        <i class="fa fa-grav"></i>
+        댓글이 아직 없습니다.
+    </p>
+    <div id="replyListBox">
+        <ul>
+            <li>
+                <div class="card_user">
+                    <img src="img/profile.jpg" width="100"/>
+                    <strong>테스터</strong>
+                </div><!-- //card_user -->
+                <div class="box_reply">
+                    <div class="comments">안녕하세요? 반갑습니다.</div>
+                    <a href="" class="btn delete">
+                        <i class="fa fa-times"></i>
+                        <span class="screen_out">삭제</span>
+                    </a>
+                    <time class="time" datetime="2017-11-10T17:10:10+09:00">2017년 10월 10일 17시 10분 10초</time>
+                </div><!--//box_reply-->
+            </li>
+        </ul>
+    </div>
+</div><!--//#replyBox-->
+<div id="loader"></div>
+<script src="js/jquery.js"></script>
+<script>
+    var $loader = $("#loader");
+    var $contentsField = $("#contentsField");
+    $contentsField.focus();
+    $("#commentForm").submit(function (e) {
+        var val = $contentsField.val().trim();
+        if(val.length==0) {
+            alert("댓글을 제대로 입력해주세요.");
+            $contentsField.val("").focus();
+            return false;
+        }
+
+        $loader.show();
+        $contentsField.val("").focus();
+        return false;
+    });
+
+    $loader.click(function () {
+        $loader.hide();
+    });
+</script>
+</body>
+</html>

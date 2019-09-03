@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>가상클래스연습</title>
+    <style>
+        #box {
+            /* 뒷배경색 */
+            background-color:#B2EBF2;
+            /* 너비 */
+            width:200px;
+            /* 높이 */
+            height:80px;
+            /*글자의 수평가운데 정렬*/
+            text-align: center;
+            /*글자의 수직 가운데 정렬 */
+            line-height:80px;
+            /* 진리의 트랜지션 */
+            transition:.5s cubic-bezier(.65,-0.03,.41,1.72);
+
+        }
+
+        #box:hover {
+            color:#fff;
+            background-color: #00B0FF;
+            width:300px;
+            height:120px;
+            line-height:120px;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+                        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        /*
+            속성값 A에서 B로(숫자값)
+            변할때 부드럽게 처리하는 속성
+            transition : 시간 가속도키워드
+        */
+
+
+        /*
+            글자의 수평가운데 정렬 :
+            - 부모에 text-align:center;
+
+            글자의 수직 가운데 정렬(한 줄 일때만)
+            - height와 line-height값을 같게
+
+        */
+
+    </style>
+</head>
+<body>
+    <div id="box">바나나라떼</div>
+</body>
+</html>

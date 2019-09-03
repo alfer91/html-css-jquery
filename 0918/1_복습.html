@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>폰트 어썸 / 웹폰트 적용</title>
+<link rel="stylesheet"
+      href="css/font-awesome.min.css" />
+<link rel="stylesheet"
+      href="css/kakao.css" />
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<style>
+    .txt {
+        /*글자 크기*/
+        font-size:60px;
+    }
+    .eng {
+        color:#F44336;
+        font-family: 'Anton', sans-serif;
+    }
+
+    .kor {
+        font-family: 'Kakao',sans-serif;
+        color:#2196F3;
+    }
+
+    .shadow {
+        text-shadow:0 0 10px #424242;
+    }
+
+</style>
+</head>
+<body>
+<div class="txt eng">
+<i class="fa fa-spin fa-calculator"></i>
+Hello? What time is it now?</div>
+<div class="txt kor shadow">
+    <!-- 아이콘용 -->
+    <i class="fa fa-podcast"></i>
+    한글 카카오 폰트 적용!
+</div>
+<div class="txt">
+    <i class="fa fa-podcast"></i>
+    한글 카카오 폰트 적용!
+</div>
+
+
+<!--
+    font awesome적용방법
+
+    1) fonts폴더에 폰트를 가져다 놓는다.
+    2) css폴더에 font-awesome.css를 가져다 놓는다.
+    3) link요소로 연결한다.
+    4) 필요한 곳에 i요소로 class='fa fa-xxxx'로
+       마크업한다.
+
+ -->
+
+<!--
+
+    ※ 요소의 분류
+
+    1) 대체되는 요소 / 대체되지 않는 요소
+    2) 블록레벨 / 인라인레벨
+
+    ※ 웹표준이란?
+
+    1) 표준에 맞는 요소와 속성을 사용하여 마크업하는 것
+    2) 마크업할때 최대한 의미에 맞게 마크업
+       (제목 : h1~h6, 리스트 : ol,ul,dl..)
+       이유? 시멘틱웹 / 웹접근성
+
+    3) 구조 및 데이터 : HTML
+       표현 (및 동작) : CSS
+       제어 (및 동작) : javascript
+
+
+
+
+
+
+
+
+ -->
+</body>
+</html>

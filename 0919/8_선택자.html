@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>선택자</title>
+    <style>
+
+        #h1 {
+            color:blue;
+        }
+
+        h1 {
+            color:red;
+        }
+
+        .h1 {
+            color:green;
+        }
+
+        ul>li>a {
+            color:#424242;
+        }
+
+    /*
+        선택자(selector)
+        1) 요소선택자 : 요소이름
+        2) id선택자 : '#'
+        3) class선택자 : '.'
+        4) 자손선택자 : ' '(한칸띄움)
+        5) 자식선택자 : '>'
+
+     */
+
+
+    </style>
+</head>
+<body>
+    <h1 id="h1">나는 h1</h1>
+    <h1 class="h1">나는 h1</h1>
+    <h1>나는 h1</h1>
+    <a href="">나는 ul의 자손이 아닙니다.</a>
+    <ul>
+        <li><a href="">리스트1</a></li>
+        <li><a href="">리스트2</a></li>
+        <li><a href="">리스트3</a></li>
+    </ul>
+</body>
+</html>

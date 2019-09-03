@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글자관련 메서드</title>
+    <style>
+        #box {
+            width:300px;
+            height:100px;
+            background: silver;
+            text-align: center;
+            line-height:100px;
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <input id="txt">
+    <button>입력</button>
+    <button>얻기</button>
+</p>
+<div id="box">?</div>
+<script src="js/jquery.js"></script>
+<script>
+
+    /*
+        글자관련 메서드
+        1) text() : getter
+        2) text(내용) : setter
+
+        input, textarea, select등의 글자는
+        파라미터의 값입니다.(value값)
+
+        1) val() : getter
+        2) val(내용) : setter
+
+     */
+
+    $("button:eq(0)").click(function () {
+
+        //id가 txt인 input요소의 글자값을 얻어와서
+        var txt = $("#txt").val();
+
+        alert(txt);
+
+        //변수 txt에 담고
+        //그 값을 #box에 글자로 대입
+
+        $("#box").text("안녕하세요?");
+
+    });//입력 버튼 click() end
+
+    //얻기 버튼누르면 #box가 가진 글자를
+    //얻어와서 alert()출력
+    $("button:eq(1)").click(function () {
+
+        var txt = $("#box").text();
+
+        alert(txt);
+
+    });//click() end
+
+</script>
+</body>
+</html>

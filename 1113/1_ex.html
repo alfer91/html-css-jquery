@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>댓글 쓰기</title>
+</head>
+<body>
+<div id="replyBox">
+    <h3><i class="fa fa-comment"></i> 댓글 <span>0</span>개</h3>
+    <div id="formBox">
+        <form id="commentForm" action="" method="get">
+            <textarea maxlength="140" id="contentsField" placeholder="새 글을 입력합니다."></textarea>
+            <button id="writeBtn" class="btn">올리기</button>
+        </form>
+    </div><!--//#formBox-->
+    <p class="no_reply">
+        <i class="fa fa-grav"></i>
+        댓글이 아직 없습니다.
+    </p>
+    <div id="replyListBox">
+        <ul>
+            <li>
+                <div class="card_user">
+                    <img src="img/profile.jpg" width="100"/>
+                    <strong>테스터</strong>
+                </div><!-- //card_user -->
+                <div class="box_reply">
+                    <div class="comments">안녕하세요? 반갑습니다.</div>
+                    <a href="" class="btn delete">
+                        <i class="fa fa-times"></i>
+                        <span class="screen_out">삭제</span>
+                    </a>
+                    <time class="time" datetime="2017-11-10T17:10:10+09:00">2017년 10월 10일 17시 10분 10초</time>
+                </div><!--//box_reply-->
+            </li>
+        </ul>
+    </div>
+</div><!--//#replyBox-->
+<div id="loader"></div>
+
+</body>
+</html>

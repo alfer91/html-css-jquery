@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>영화 관리 서비스</title>
+    <link rel="icon" href="img/daum_movie.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/koverwatch.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <style>
+        #searchBox {
+            padding:30px;
+            border-bottom:2px dashed #999;
+        }
+
+        #searchBox div {
+            width:644px;
+            height:74px;
+            margin:auto;
+            /*positioning context 지정*/
+            position: relative;
+        }
+
+        #q {
+            width:580px;
+            height:50px;
+            font:40px 'Koverwatch',sans-serif;
+            padding:10px 30px;
+            border-radius: 100px;
+            border:2px solid #bbb;
+            outline: none;
+            color:#bbb;
+        }
+
+        #q:focus {
+            border-color:#00C6FF;
+            color:#00C6FF;
+        }
+
+        /* '+' : 다음요소 선택자 */
+        #q:focus+#searchBtn {
+            color:#00C6FF;
+        }
+
+        /* placeholder 색상 */
+        ::placeholder {
+            color:#bbb;
+        }
+
+        #q:focus::placeholder {
+            color:#00C6FF;
+        }
+
+        #searchBtn {
+            position: absolute;
+            width:50px;
+            height:50px;
+            background: transparent;
+            border:none;
+            font-size:36px;
+            right:15px;
+            top:12px;
+            cursor: pointer;
+            color:#bbb;
+        }
+
+        .rating_all,.rating_12,.rating_15,.rating_19 {
+            display: inline-block;
+            width:32px;
+            height:32px;
+            vertical-align: middle;
+            border-radius: 8px;
+            text-align: center;
+            line-height:32px;
+            font-size:25px;
+            font-weight: bold;
+            color:#fff;
+            text-shadow:1px 1px 1px #424242;
+
+        }
+        .rating_all {
+            background: #00C853;
+        }
+        .rating_all::before {
+            content:"all";
+        }
+        .rating_12 {
+            background: #00B0FF;
+        }
+        .rating_12::before {
+            content:"12";
+        }
+        .rating_15 {
+            background: #FFEA00;
+        }
+        .rating_15::before{
+            content: '15';
+        }
+        .rating_19 {
+            background: #FF1744;
+        }
+        .rating_19::before{
+            content: "19";
+        }
+
+        #listBox h2 {
+            padding:30px;
+            font-size:50px;
+            text-align: center;
+        }
+
+        #listBox h3 {
+            position: absolute;
+            left:15px;
+            top:15px;
+            width:430px;
+            /* 글자가 길어졌을때 ...으로 표현 */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        #listBox h3 strong {
+            font-size:36px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        #listBox ul {
+            overflow: hidden;
+        }
+
+        #listBox li {
+            width:538px;
+            height:145px;
+            background: #BDBDBD;
+            float: left;
+            margin-right:20px;
+            margin-bottom:20px;
+            border:1px solid #9E9E9E;
+            position: relative;
+        }
+
+        #listBox li:nth-child(2n) {
+            margin-right:0;
+        }
+
+        #listBox dl {
+            position: absolute;
+            left:15px;
+            top:60px;
+            width:200px;
+        }
+
+        #listBox dt {
+            float: left;
+            width:40px;
+            padding:2px;
+            font-weight: bold;
+            text-align: left;
+        }
+        #listBox dd {
+            float: left;
+            width:130px;
+            padding:2px;
+        }
+
+        #listBox em {
+            position: absolute;
+            right:10px;
+            bottom:10px;
+            font-size:40px;
+            font-weight: bold;
+        }
+        #listBox em>span {
+            font-size:34px;
+            font-weight: normal;
+            color:#626262;
+        }
+
+        li .btn {
+            position: absolute;
+            width:40px;
+            height:40px;
+            font-size:26px;
+            text-align: center;
+            line-height:40px;
+            color:#fff;
+            border-radius: 40px;
+            background: #9E9E9E;
+            top:10px;
+            transition: .1s ease;
+            opacity: .1;
+        }
+        #listBox li:hover .btn {
+            opacity: 1;
+        }
+        li .btn:hover {
+            background: #00C6FF;
+        }
+        .update {
+            right:55px;
+        }
+        .delete {
+            right:10px;
+        }
+
+        #popup {
+            position: fixed;
+            width:100%;
+            height:100%;
+            background: rgba(0,0,0,.8);
+            left:0;
+            top:0;
+            display: none;
+        }
+
+        #dialogueBox {
+            position: absolute;
+            padding:30px;
+            width:400px;
+            background: #fff;
+            top:50%;
+            margin-top:-75px;
+            left:50%;
+            margin-left:-230px;
+        }
+
+        #dialogueBox h3 {
+            text-align: center;
+            font-size:24px;
+            padding-bottom:20px;
+            font-weight: bold;
+        }
+        #dialogueBox .box_btn {
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<!-- html5의 새로운 요소들 :
+header, footer, main, nav, article, aside, section.. -->
+<!-- auxiliary : 보조의 (줄임말) aux -->
+    <header id="header">
+        <div class="aux">
+            <h1 id="logo">
+                <a href="">
+                    <i class="fa fa-youtube-play"></i>
+                    <span>멋진 영화관리 앱</span>
+                </a>
+            </h1>
+            <nav id="gnb">
+                <h2 class="screen_out">주요 서비스</h2>
+                <ul>
+                    <li><a href="">
+                        <i class="fa fa-list-alt"></i>
+                        장르
+                    </a></li>
+                    <li><a href="">
+                        <i class="fa fa-film"></i>
+                        영화
+                    </a></li>
+                </ul>
+            </nav><!--//#gnb -->
+        </div><!--//.aux -->
+    </header><!--//#header -->
+    <main id="content">
+        <div class="aux">
+
+            <section id="searchBox">
+                <h2 class="screen_out">영화검색</h2>
+                <form action="movies.jsp" method="get">
+                    <fieldset>
+                        <legend class="screen_out">영화검색폼</legend>
+                        <div>
+                            <input
+                            name="q"
+                            id="q"
+                            autofocus
+                            title="검색할 영화 입력"
+                            autocomplete="off"
+                            placeholder="검색할 영화를 입력하세요.">
+                            <button id="searchBtn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </section><!--//#searchBox -->
+
+            <section id="listBox">
+                <h2>영화목록</h2>
+                <ul>
+                    <li>
+                        <h3>
+                            <!--<span class="rating_all"></span>-->
+                            <!--<span class="rating_12"></span>-->
+                            <!--<span class="rating_15"></span>-->
+                            <span class="rating_19"></span>
+                            <strong>
+                                토르 : 라그나로크
+                            </strong>
+                        </h3>
+                        <dl>
+                            <dt>장 르</dt>
+                            <dd>액션</dd>
+                            <dt>감 독</dt>
+                            <dd>강윤성</dd>
+                            <dt>개봉일</dt>
+                            <dd>2017년 10월 25일</dd>
+                        </dl>
+                        <em>2,556,434<span>명</span></em>
+
+                        <a href=""
+                           title="수정폼으로 이동"
+                           class="btn update">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a href="deleteMovie.jsp?no=15"
+                           title="삭제하기" data-name="토르:라그나로크"
+                           class="btn delete">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <h3>
+                        <span class="rating_12"></span>
+                        <strong>
+                           눈으로 묻고 얼굴로 대답하고 마음속 가득히 사랑은 영원히
+                        </strong>
+                        </h3>
+                    </li>
+                </ul>
+            </section><!--//#listBox -->
+
+
+
+
+        </div><!--//.aux -->
+    </main><!--//#content -->
+    <footer id="footer">
+        <div class="aux">
+            <div id="policy">
+                <h4 class="screen_out">정책 및 약관</h4>
+                <ul>
+                    <li><a href="">회사소개</a></li><!--
+                 --><li><a href="">광고</a></li><!--
+                 --><li><a href="">검색등록</a></li><!--
+                 --><li><a href="">제휴제안</a></li><!--
+                 --><li><a href="">이용약관</a></li><!--
+                 --><li><a href=""><strong>개인정보이용약관</strong></a></li><!--
+                 --><li><a href="">청소년보호정책</a></li><!--
+                 --><li><a href="">고객센터</a></li>
+                </ul>
+            </div><!-- //policy  -->
+            <address>&copy; 2017 <a href="">jbm.com</a></address>
+        </div><!--//.aux -->
+    </footer><!--//#footer -->
+<!-- 삭제,취소 팝업 -->
+<div id="popup">
+    <div id="dialogueBox">
+        <h3>영화 '<span id="title"></span>'을(를) 삭제하시겠습니까?</h3>
+        <div class="box_btn">
+        <button class="btn cancel">
+            <i class="fa fa-ban"></i>
+            취소</button>
+        <button class="btn delete">
+            <i class="fa fa-trash"></i>
+            삭제</button>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+
+    var $popup = $("#popup");
+
+    //실제로 넘어갈 페이지의 주소를 저장할 전역변수
+    var url = "";
+
+    $("li .delete").click(function (e) {
+        //우리가 클릭한 그 delete버튼이 가지고 있는
+        //data-name속성의 값을 얻어옴
+        var name = this.dataset.name;
+
+        //우리가 클릭한 그 delete버튼의 href속성값을
+        //얻어와서 url전역변수에 대입
+        url = $(this).attr("href");
+
+        //#title에 글자를 대입
+        $("#title").text(name);
+
+        //팝업창을 띄움
+        $popup.show();
+
+        //a요소가 가진 기본속성(즉, href로 이동하는 것)
+        //을 막아줌
+        e.preventDefault();
+
+    });//li .delete click() end
+
+    //팝업안에 있는 취소버튼
+    $(".cancel").click(function () {
+        //팝업 숨기기
+        $popup.hide();
+    });//.cancel click() end
+
+    //팝업안에 있는 .delete버튼
+    $("#popup .delete").click(function () {
+
+        //페이지 이동
+        location.href = url;
+
+    });//#popup .delete click() end
+
+</script>
+</body>
+</html>

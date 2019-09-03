@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>복습</title>
+    <style>
+        html {
+            width:100%;
+            height:100%;
+        }
+        body {
+            margin: 0;
+            width:100%;
+            height:100%;
+            cursor: crosshair;
+        }
+        #circle {
+            width:0;
+            height:0;
+            border-radius: 300px;
+            position: fixed;
+            left:0;
+            top:0;
+            transition: .1s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="circle"></div>
+<script src="js/jquery.js"></script>
+<script>
+
+//    function getNum(size,start) {
+//        return Math.floor(Math.random()+size)+start;
+//    }
+
+    //랜덤한 색상을 만드는 함수(중복된코드는 함수로)
+    function getColor() {
+
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+
+        return "rgb("+r+","+g+","+b+")";
+
+    }//getColor() end
+
+
+    $("body").click(function (e) {
+
+        //body의 뒷배경색 변경
+        $(this).css("background",getColor);
+
+        //50~200까지
+        var r = Math.floor(Math.random()*150)+50;
+
+       $("#circle").css({
+           width:r,
+           height:r,
+           left:e.clientX-(r/2),
+           top:e.clientY-(r/2),
+           background:getColor
+       });//css() end
+
+    });//click() end
+</script>
+</body>
+</html>

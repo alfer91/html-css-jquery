@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 로테이트</title>
+    <link rel="stylesheet"
+          href="css/font-awesome.min.css"/>
+    <style>
+        #wrap {
+            /* 이미지와 크기 똑같게 */
+            width:480px;
+            height:500px;
+            border:5px solid blue;
+            position: fixed;
+            left:50%;
+            top:50%;
+            margin:-251px 0 0 -241px;
+            overflow: hidden;
+        }
+
+        #imgs {
+            width:1480px;
+            height:1480px;
+            background: red;
+            position: absolute;
+            left:-500px;
+            transition:.2s ease;
+        }
+
+        #imgs img {
+            position: absolute;
+            top:0;
+            left:500px;
+            transform-origin:50% 740px;
+        }
+
+        #imgs img:nth-child(1) {
+            transform:rotate(0deg);
+        }
+        #imgs img:nth-child(2) {
+            transform:rotate(90deg);
+        }
+        #imgs img:nth-child(3) {
+            transform:rotate(180deg);
+        }
+        #imgs img:nth-child(4) {
+            transform:rotate(270deg);
+        }
+
+    </style>
+</head>
+<body>
+<p>
+    <button id="leftBtn" class="fa fa-arrow-left"></button>
+    <button id="rightBtn" class="fa fa-arrow-right"></button>
+</p>
+    <div id="wrap">
+
+        <div id="imgs">
+            <img src="img/apeach.png" />
+            <img src="img/frodo.png" />
+            <img src="img/neo.png" />
+            <img src="img/muji.png" />
+        </div><!-- //#imgs -->
+
+    </div><!-- //#wrap -->
+<script src="js/jquery.js"></script>
+<script>
+
+    var deg = 0;
+
+    $("#leftBtn").click(function () {
+        //값 증가
+        deg += 90;
+        $("#imgs").css("transform","rotate("+deg+"deg)");
+
+    });//leftBtn click() end
+
+     $("#rightBtn").click(function () {
+        //값 감소
+        deg -= 90;
+        $("#imgs").css("transform","rotate("+deg+"deg)");
+
+    });//leftBtn click() end
+
+
+
+</script>
+</body>
+</html>

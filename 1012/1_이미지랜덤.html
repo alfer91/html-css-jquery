@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 랜덤</title>
+    <style>
+
+        body {
+            /* 인라인요소의 수평 가운데 정렬 */
+            text-align: center;
+        }
+
+        #car {
+            transition: .5s ease-out;
+            width:400px;
+            height:300px;
+            border:10px solid #424242;
+            background: url(img/Audi.jpg);
+            background-size: 100% 100%;
+            /*
+                Audi,BMW,Mere...Benz,..이름이 숫자로 되어있지 않음
+            */
+            margin:auto;
+        }
+        #kakao {
+            cursor: pointer;
+            transition: .3s ease;
+            margin: 10px;
+        }
+
+        #kakao:hover {
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+                        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+<body>
+<h1>이미지랜덤</h1>
+<img src="img/ico1.png" id="kakao"/>
+<div id="car"></div>
+<!-- jquery import -->
+<script src="js/jquery.js"></script>
+<script>
+
+    // on()
+
+    var carImgs = [
+        "Audi.jpg",
+        "BMW.jpg",
+        "Land_Rover-Range_Rover.jpg",
+        "Mercedes-Benz.jpg",
+        "Peugeot.jpg"
+    ];
+
+
+    $("#kakao").on("click",function () {
+
+        //1~8까지의 랜덤한 정수 발생후
+        var no = Math.floor(Math.random()*8)+1;
+
+        //src안에 들어갈 속성값을 만들어야 합니다.
+        var src = "img/ico"+no+".png";
+
+        //#kakao요소의 src속성값을 변경합니다.
+        $("#kakao").attr("src",src);
+
+
+        //0~4까지의 랜덤한 수 발생
+        no = Math.floor(Math.random()*5);
+
+        //#car의 뒷배경 변경
+        $("#car").css("background-image",
+                      "url(img/"+carImgs[no]+")");
+
+    });//click() end
+
+
+</script>
+</body>
+</html>

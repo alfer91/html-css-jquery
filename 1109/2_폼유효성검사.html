@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>폼의 유효성 검사</title>
+</head>
+<body>
+    <form id="form" action="test.jsp" method="post">
+        <input id="id"
+               placeholder="아이디입력"
+               name="id">
+        <input type="password" id="pwd"
+               placeholder="비밀번호 입력"
+               name="pwd"/>
+        <input id="audience" placeholder="관객수"/>
+        <button>로그인</button>
+    </form>
+<script src="js/jquery.js"></script>
+<script>
+//유효성검사를 위해서는 form요소의 submit이벤트를
+//리스닝합니다.
+    $("#form").on("submit",function (e) {
+
+        //유효성검사는 각 input,select,textarea등
+        //을 검사하여 맞으면 submit 아니면 return
+
+        //만약 id안에 값을 입력하지 않았을때
+        //(FM대로라면 정규표현식을 이용)
+
+        //trim()은 빈공백 제거
+        var val = $("#id").val().trim();
+
+        if(val=="") {
+            alert("id를 입력해주세요~");
+            $("#id").val("").focus();
+            return false;//return false면 이동안함
+        }//if end
+
+        val = $("#pwd").val().trim();
+
+        if(val=="") {
+            alert("비밀번호를 입력해주세요~");
+            $("#pwd").val("").focus();
+            return false;
+        }//if end
+
+        val = $("#audience").val().trim();
+
+        if(val.length==0) {
+            alert("관객수를 입력해주세요.");
+            $("#audience").val("").focus();
+            return false;
+        }//if end
+
+        //여기까지 왔으면 관객수 input에 글자가 있음
+        //하지만 숫자형이어야 합니다.
+        if(isNaN(val)) {
+            alert("관객수는 숫자로 입력하세요.");
+            $("#audience").val("").focus();
+            return false;
+        }
+
+        //폼의 submit막기
+       // e.preventDefault();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>실력평가 4번</title>
+    <link rel="stylesheet"
+          href="css/notosanskr.css" />
+    <style>
+        body {
+            font-family: "Noto Sans KR",sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-weight: 900;
+        }
+
+        #btn1 {
+            width:230px;
+            height:50px;
+            display: block;
+            background:#03A9F4;
+            text-align: center;
+            line-height: 50px;
+            font-weight:700;
+            font-size:24px;
+            border-radius: 25px;
+            color:#fff;
+            text-decoration: none;
+            transition: .2s ease;
+            margin:auto;
+        }
+        #btn1:hover {
+            background: #64B5F6;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+            0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+        #btn1:active {
+            background: #0D47A1;
+            transform:scale(.9);
+        }
+
+        #btn2 {
+            /*
+            인라인이지만 대체되는 요소이기 때문에
+            width,height지정 가능
+            */
+            width:230px;
+            height:50px;
+            background: #FFEB3B;
+            border-radius: 25px;
+            /*
+            대체되는 요소들(input,button,textarea등)은
+            폰트패밀리 상속이 안됩니다.
+            */
+            font:700 24px 'Noto Sans KR',sans-serif;
+            /*
+            버튼은 기본적으로 뒷배경색, border를
+            가지고 있습니다.
+            */
+            border:none;
+            cursor: pointer;
+            box-shadow:8px 8px 0 #424242;
+            transition:.2s ease;
+            /* 웹접근성때문에 버튼에 테두리 지우기 */
+            outline:none;
+        }
+        #btn2:active {
+            transform:translate(8px,8px);
+            box-shadow:0 0 0 #424242;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>실력평가 4번 복습</h1>
+    <a id="btn1" href="">&lt; 나는 버튼! &gt;</a>
+    <hr/>
+    <button id="btn2">나도 버튼!</button>
+</body>
+</html>

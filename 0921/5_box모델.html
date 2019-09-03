@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>박스모델</title>
+    <style>
+        #test {
+            /*
+                박스모델이란
+
+                width,height,margin,border,padding
+                으로 더한 값
+
+            */
+            width:100px;
+            height:100px;
+            /*요소바깥테두리*/
+            border:50px solid red;
+            /* 컨텐트(width*height)와 보더사이 */
+            padding:50px;
+            /* 다른 요소와의 간격 */
+            margin:50px;
+            background-color:blue;
+
+            /*css3*/
+            background-clip: content-box;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="test">가나다라마바사</div>
+</body>
+</html>

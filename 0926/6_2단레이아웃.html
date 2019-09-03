@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>2단 레이아웃</title>
+    <style>
+        body {
+            /*브라우저가 가진 css*/
+            margin:0;
+        }
+        #wrap {
+            width:1000px;
+            background: silver;
+            margin:auto;
+        }
+        #header {
+            width:1000px;
+            height:100px;
+            background: #FF4081;
+        }
+
+        #content {
+            width:700px;
+            height:500px;
+            background-color: #76FF03;
+            opacity: .4;
+            float: left;
+        }
+
+        #sideBar {
+            width:300px;
+            opacity: .4;
+            height:500px;
+            background-color: #FFFF00;
+            float: left;
+        }
+
+        #footer {
+            width:1000px;
+            height:100px;
+            background: #18FFFF;
+            /*float이 끝나는 형제요소*/
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header"></div><!--//#header-->
+        <div id="content"></div><!--//#content-->
+        <div id="sideBar"></div><!--//#sideBar-->
+        <div id="footer"></div><!--//#footer-->
+    </div><!--//#wrap-->
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery의 선택자</title>
+   </head>
+<body>
+<button>눌러보세요!</button>
+<ul>
+    <li>리스트1</li>
+    <li>리스트2</li>
+    <li>리스트3</li>
+    <li>리스트4</li>
+    <li>리스트5</li>
+    <li>리스트6</li>
+    <li>리스트7</li>
+    <li>리스트8</li>
+    <li>리스트9</li>
+</ul>
+<!-- 1) jquery import  -->
+<script src="js/jquery.js"></script>
+<!-- 2) script(우리가 작성)  -->
+<script>
+
+    //3) button요소를 선택하고
+    // click이벤트리스너를 붙이는 메서드를 호출하고
+    //이벤트핸들러함수를 작성
+    $("button").click(function () {
+
+        //4) 첫번째 li를 선택하고
+        //글자색을 녹색으로
+        $("li:first-child").css("color","green");
+        //jquery는 first선택자가 있음
+        $("li:first").css("background","lightgreen");
+
+        //css선택자 : first-child / last-child
+
+        //5) 마지막 자식 li를 선택하고
+        //글자색을 빨간색으로
+        $("li:last-child").css("color","red");
+        $("li:last").css("background","pink");
+
+
+        //6) 4번째 자식 li를 선택하고
+        //글자색을 파란색으로
+        $('li:nth-child(4)').css("color",'blue');
+
+        // jquery선택자 : eq(인덱스)
+        $("li:eq(3)").css("background","skyblue");
+
+        //7) 7번째 자식 li를 선택하고
+        //글자색을 오렌지색으로
+        $("li:nth-child(7)").css("color","orange");
+        //7번째 자식 li의 뒷배경색을 yellow로
+        $("li:eq(6)").css("background-color","yellow");
+
+    });//click() end
+
+
+
+</script>
+</body>
+</html>

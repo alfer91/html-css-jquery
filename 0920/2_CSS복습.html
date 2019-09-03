@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS복습</title>
+    <link rel="stylesheet"
+    href="css/font-awesome.min.css"/>
+    <link rel="stylesheet"
+          href="css/notosanskr.css" />
+    <style>
+        body {
+            font-family: 'Noto Sans KR',sans-serif;
+        }
+        #box {
+            width:400px;
+            height:150px;
+            background-color: #FF80AB ;
+            text-align: center;
+            line-height:150px;
+            font-size:42px;
+            font-weight:100;
+            /*cursor 지정
+                1) pointer : 손모양
+
+            */
+            cursor: pointer;
+            transition: .2s ease-out;
+        }
+        #box:hover {
+            transform:scale(1.2);
+            background-color: #F50057;
+            color:#fff;
+            font-weight: 900;
+            box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22),
+                        0 25px 55px 0 rgba(0, 0, 0, 0.21);
+        }
+
+
+
+
+        #profile {
+            width:150px;
+            height:150px;
+            background-image: url(img/profile.jpg);
+            /* background-size :
+            1) px지정
+            2) %지정
+            3) cover, contain 지정(요소비율,이미지비율)
+            */
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border-radius:95px;
+            /*border-color:red;*/
+            /*border-style:dashed;*/
+            /*border-width:20px;*/
+
+            /*투명도 : opacity(0~1) */
+            opacity:.5;
+
+            border:20px solid #424242;
+            /*
+                border : 테두리선
+                border-color : 색상
+                border-width : 너비
+                border-style : 스타일(solid, dotted, dashed..)
+
+            */
+            transition:.2s ease;
+        }
+        #profile:hover {
+            opacity: 1;
+            border-color:#F44336;
+        }
+
+        img {
+            border-radius:170px;
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fa fa-comment-o"></i>복습목록</h1>
+    <ol>
+        <li><i class="fa fa-battery-0"></i> xxx</li>
+        <li><i class="fa fa-battery-1"></i> xxx</li>
+        <li><i class="fa fa-battery-2"></i> xxx</li>
+        <li><i class="fa fa-battery-3"></i> xxx</li>
+    </ol>
+<hr/>
+<div id="box">CSS복습</div>
+<hr/>
+<img alt="김필구 프로필 사진"
+     width="150" height="150"
+     src="img/profile.jpg"/>
+<div id="profile"></div>
+</body>
+</html>

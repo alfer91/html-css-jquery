@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Apple (대한민국)</title>
+    <link rel="icon" href="img/apple_favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <!-- apple 폰트 -->
+    <link rel="stylesheet" href="css/apple.css" />
+    <style>
+        html {
+            /*스크롤 고정*/
+            overflow-y: scroll;
+        }
+        body {
+            font-family: 'SF Pro Display','SF Pro KR',sans-serif;
+
+        }
+
+        #header{
+            width:100%;
+            background: #323232;
+        }
+        #header .aux {
+            height:44px;
+            background-image: url(img/apple_nav.png);
+            background-position: 4px 1px;
+            background-repeat: no-repeat;
+        }
+
+        #main {
+            text-align: center;
+
+        }
+        #main .aux {
+            height:640px;
+            padding-top:70px;
+        }
+        #hero {
+            position: absolute;
+            right:9.5px;
+            bottom:152px;
+        }
+
+        #main h2 {
+            font-size:56px;
+            font-weight:600;
+        }
+
+        #main h3 {
+            margin-top:8px;
+            font-size:27px;
+            font-weight:400;
+        }
+
+        .aux {
+            width:1000px;
+            margin: auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="aux"></div><!--//.aux -->
+    </header><!--//#header -->
+    <main id="main">
+        <div class="aux">
+            <h2>iPhone X</h2>
+            <h3>미래와의 조우.</h3>
+            <img id="hero" src="img/iphone_x_largetall.jpg" />
+        </div><!--//.aux -->
+    </main><!--//#main -->
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>수직메뉴</title>
+    <link rel="stylesheet" href="css/notosanskr.css" />
+    <style>
+        body {
+            /* 브라우저가 가진 css margin 8px */
+            margin:0;
+            font-family: 'Noto Sans KR',sans-serif;
+        }
+
+        .screen_out {
+            position: absolute;
+            width:0;
+            height:0;
+            line-height: 0;
+            overflow: hidden;
+            text-indent:-9999px;
+
+            /*display: none; <---리더기가 읽지 못함  */
+        }
+
+        #nav {
+            width:160px;
+            border:10px solid #5D4037;
+            border-bottom:none;
+        }
+
+        #nav ul {
+            width:160px;
+            /*
+            브라우저가 가지고 있는 css
+            margin,list-style,padding
+            */
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #nav li {
+            width:160px;
+            height:60px;
+            background: orange;
+        }
+        #nav a {
+            width:160px;
+            height:50px;
+            display: block;
+            background: #fff;
+            font-size:22px;
+            text-align: center;
+            line-height: 50px;
+            font-weight:900;
+            color:#5D4037;
+            text-decoration: none;
+            border-bottom:10px solid #5D4037;
+            transition: .3s ease-out;
+        }
+        #nav a:hover {
+            background: #5D4037;
+            color:#fff;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<!--
+<header></header>
+<footer></footer>
+<main></main>
+<section></section>
+<article></article>
+<nav></nav>
+-->
+
+    <div id="nav">
+        <!--
+        시멘틱웹, 웹접근성을 위해서 마크업은 해두지만
+        CSS입힐때는 제거하는 방법
+
+         -->
+        <h2 class="screen_out">주요서비스</h2>
+        <ul>
+            <li><a href="">메 일</a></li>
+            <li><a href="">카 페</a></li>
+            <li><a href="">블로그</a></li>
+            <li><a href="">지식in</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>우리서버에 있는 웹폰트 적용</title>
+    <link rel="stylesheet" href="css/kakao.css" />
+    <link rel="stylesheet" href="css/notosanskr.css" />
+
+    <style>
+
+        /*
+            폰트는 여러개를 써줍니다.
+            순차적으로 적용됩니다.(있으면 적용됨)
+
+            만약, 전부 없을 경우를 대비하여
+            대표패밀리를 적용합니다.(제일 마지막)
+
+            1) serif : 삐침이 있는 폰트
+            2) sans-serif : 삐침이 없는 폰트
+            3) monospace : 타자기체
+            4) cursive : 필기체
+            5) fantasy : 판타지스러운 체
+
+         */
+
+
+        .noto_sans {
+            color:#76FF03;
+            font-family: 'Noto Sans KR',sans-serif;
+        }
+
+        .b1 {font-weight: 100;}
+        .b2 {font-weight: 200;}
+        .b3 {font-weight: 300;}
+        .b4 {font-weight: 400;}
+        .b5 {font-weight: 500;}
+        .b6 {font-weight: 700;}
+        .b7 {font-weight: 900;}
+
+        .kakao {
+            font-family: 'Kakao',sans-serif;
+            color:#01579B;
+        }
+
+        .light {
+            font-weight:200;
+        }
+        .regular {
+            font-weight: 500;
+        }
+        .bold {
+            font-weight: 900;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--
+
+    id규칙 / class규칙을 정합니다.
+    코딩컨벤션을 수행합니다.
+
+    id는 낙타표기법(camel case)
+    class는 언더바표기법
+
+ -->
+    <!--
+    클래스는 한 페이지에 중복,
+    한 요소에 중첩이 가능
+    -->
+    <h1 class="kakao light">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="kakao regular">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="kakao bold">자바기반의 빅데이터 머신러닝 과정</h1>
+    <!-- horizontal line의 줄임말(수평선) : 컨텐츠를 나눌때 -->
+    <hr/>
+    <h1 class="b1 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="b2 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="b3 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="b4 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="b5 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="b6 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+    <h1 class="b7 noto_sans">자바기반의 빅데이터 머신러닝 과정</h1>
+</body>
+</html>

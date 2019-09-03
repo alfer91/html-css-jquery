@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>댓글 쓰기</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/notoserif.css" />
+<style>
+html {
+    overflow-y: scroll;
+}
+
+body {
+    font:500 16px arial,'Noto Serif KR',serif;
+    background: #F6F6F6;
+}
+
+#replyBox {
+    width:1000px;
+    border:5px solid #00E676;
+    margin:auto;
+}
+
+#replyBox h3 {
+    text-align: center;
+    font-size:30px;
+    color:#00C853;
+    margin:10px 0;
+    font-weight: 900;
+}
+
+#formBox {
+    text-align: center;
+    margin:20px;
+}
+
+#contentsField {
+    width:700px;
+    height:100px;
+    border:2px solid #00E676;
+    vertical-align: middle;
+    font:500 22px 'Noto Serif KR',serif;
+    padding:10px;
+    /*textarea 크기 고정*/
+    resize: none;
+}
+
+#writeBtn {
+    width:124px;
+    height:124px;
+    vertical-align: middle;
+    background: #4D525A;
+    color:#fff;
+    border:none;
+    font:900 20px 'Noto Serif KR',serif;
+    cursor: pointer;
+}
+#writeBtn:hover {
+    background: #00C853;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.no_reply {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    font-size:24px;
+    margin-bottom:20px;
+}
+/* .reply는 댓글이 있을때 */
+.reply .no_reply {
+    display: none;
+}
+
+.reply #replyListBox {
+    display: block;
+}
+
+#replyListBox {
+    width:850px;
+    margin:20px auto;
+    border-top:1px solid #424242;
+    display: none;
+}
+
+#replyListBox li {
+    border-bottom:2px dotted #999;
+    position: relative;
+    padding-top:60px;
+    padding-bottom:20px;
+}
+
+.card_user {
+    position: absolute;
+    width:100px;
+    height:130px;
+    left:15px;
+    top:15px;
+    text-align: center;
+    color:#999999;
+    font-weight:900;
+}
+.card_user img {
+    width:100px;
+    height:100px;
+    border-radius: 100px;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box_reply {
+    /*글이 늘어나면 같이 height가 늘어나야 하기 때문에*/
+    width:700px;
+    position: relative;
+    left:150px;
+
+}
+
+
+
+
+#replyListBox .delete {
+    position: absolute;
+    right:10px;
+    top:-50px;
+    background: #999;
+    width:30px;
+    height:30px;
+    border-radius: 30px;
+    color:#fff;
+    font-size:24px;
+    text-align: center;
+}
+#replyListBox .comments {
+    width:630px;
+    min-height:80px;
+    background: #00E676;
+    border-radius:0 12px 12px 12px;
+    position: relative;
+    padding:10px;
+    /*빈공백처리*/
+    white-space: pre-line;
+}
+#replyListBox .comments::before {
+    content: '';
+    position: absolute;
+    width:0;
+    height:0;
+    border-top:15px solid #00E676;
+    border-left:15px solid transparent;
+    left:-15px;
+    top:0;
+}
+
+
+#replyListBox .time {
+    position: absolute;
+    left:5px;
+    top:-30px;
+}
+
+#replyListBox .delete:hover {
+    background: #00E676;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    display: none;
+    background: rgba(0, 230, 118, .6) url(img/loader.gif) no-repeat center;
+}
+
+</style>
+</head>
+<body>
+<div id="replyBox">
+<h3><i class="fa fa-comment"></i> 댓글 <span id="size">0</span>개</h3>
+<div id="formBox">
+    <form id="commentForm" action="" method="get">
+        <textarea maxlength="140" id="contentsField" placeholder="새 글을 입력합니다."></textarea>
+        <button id="writeBtn" class="btn">올리기</button>
+    </form>
+</div><!--//#formBox-->
+<p class="no_reply">
+    <i class="fa fa-grav"></i>
+    댓글이 아직 없습니다.
+</p>
+<div id="replyListBox">
+    <ul>
+
+    </ul>
+</div>
+</div><!--//#replyBox-->
+<div id="loader"></div>
+<!--  언더스코어 템플릿 -->
+<script type="text/template" id="replyTmp">
+<li>
+    <div class="card_user">
+        <img src="img/profile.jpg" width="100"/>
+        <strong>테스터</strong>
+    </div><!-- //card_user -->
+    <div class="box_reply">
+        <div class="comments"><%=comment%></div>
+        <a href="" class="btn delete">
+            <i class="fa fa-times"></i>
+            <span class="screen_out">삭제</span>
+        </a>
+        <time class="time"
+      datetime="<%=datetime%>"><%=time%></time>
+    </div><!--//box_reply-->
+</li>
+</script>
+<script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/moment-with-locales.js"></script>
+<script>
+
+    //.delete클릭했을때 alert창 띄우기
+    $("#replyListBox").on("click",".delete",function (e) {
+
+        //우리가 클릭한 그 요소의 조상중에
+        //li요소를 선택후 삭제
+        $(this).parents("li").remove();
+
+
+
+
+        //만약 li가 전부 없다면
+        //#replyBox에 removeClass("reply")
+        if($("li").length == 0) {
+            $("#replyBox").removeClass("reply");
+        }//if end
+
+       e.preventDefault();
+    });//click() end
+
+    //한국의 시간
+    moment.locale("ko");
+
+    setInterval(function () {
+
+        //댓글 갯수 변경
+        $("#size").text($("li").length);
+
+        $(".time").each(function () {
+
+            //time요소의 datetime속성값을 얻어옴
+            var datetime = $(this).attr("datetime");
+
+            //해당 시간으로 모멘트객체 생성
+            var time = moment(datetime);
+
+            //현재부터 몇초전,몇분전,몇시간전...
+            var fromNow = time.fromNow();
+
+            //해당 요소의 글자로 출력
+            $(this).text(fromNow);
+
+        });//each() end
+
+    },100);
+
+
+    var $comments = $("#contentsField");
+
+    //언더스코어 템플릿 만들어 놓기
+    var tmp = _.template($("#replyTmp").html());
+
+    //페이지 로딩되었을때 포커스 맞추기
+    $comments.focus();
+
+    $("#commentForm").on("submit",function (e) {
+
+        var comments = $comments.val().trim();
+
+        if(comments.length==0) {
+           alert("댓글을 제대로 입력해주세용~");
+           $comments.val("").focus();
+           return false;
+        }//if end
+
+        //여기에 왔다는 뜻은 유저가 댓글을
+        //제대로 쓴겁니다.
+
+        //글을 쓰니까 #replyBox에 reply라는 클래스 add
+        $("#replyBox").addClass("reply");
+
+        //현재 시간
+        var now =moment();
+
+        var markup = tmp({
+            comment:comments,
+            datetime:now.format("YYYY-MM-DDTHH:mm:ss+09:00"),
+            time:now.format("YYYY년 MM월 DD일 HH시 mm분 ss초.SSS")
+        });
+
+        //ul에 첫번째 자식으로 붙임
+        $("#replyListBox ul").prepend(markup);
+
+
+
+
+        $comments.val("").focus();
+
+        // alert(markup);
+
+        //페이지 리푸레쉬 막기
+        e.preventDefault();
+    });
+
+
+</script>
+</body>
+</html>

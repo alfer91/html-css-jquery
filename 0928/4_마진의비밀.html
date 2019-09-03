@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마진의 비밀</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+        ul {
+            width:200px;
+            background: #E91E63;
+
+            /*
+                부모와 자식간의 마진겹침현상
+
+                자식에게 margin-top을 지정했는데
+                부모가 같이 마진을 가지는 현상
+
+                막는방법 :
+                1) padding,border로 막음
+                2) overflow : hidden
+                3) 자식의 마진탑 대신 부모의 패딩탑으로
+
+            */
+            overflow: hidden;
+        }
+
+        li {
+            background: #2196F3;
+            padding:10px;
+            margin: 20px;
+            /*
+
+            형제들간의 마진겹침현상(블록레벨일때)
+
+            그러나 float이나 inline-block일때는
+            마진겹침현상이 없음
+
+             */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>리스트</li>
+        <li>리스트</li>
+        <li>리스트</li>
+        <li>리스트</li>
+    </ul>
+</body>
+</html>

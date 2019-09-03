@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요소의 생성</title>
+    <style>
+        #box {
+            margin:20px;
+            width:200px;
+            min-height:200px;
+            padding:20px;
+            background: #FF5722;
+        }
+        table {
+            border-collapse: collapse;
+            margin:10px;
+        }
+        td {
+            border:1px solid #fff;
+            padding:10px 20px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <button>테이블 생성</button>
+    <div id="box">
+        <!--<table>-->
+            <!--<tbody>-->
+                <!--<tr>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>3</td>-->
+                    <!--<td>4</td>-->
+                <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+    </div>
+<script src="js/jquery.js"></script>
+<script>
+    $("button").click(function () {
+
+
+        //table요소 생성
+        var $table = $("<table><tbody></tbody></table>");
+
+        //1번째 tr생성
+        var $tr1 = $("<tr><td>1</td><td>2</td></tr>");
+
+        //2번째 tr생성
+        var $tr2 = $("<tr>");
+
+        //3번 td생성
+        var $td3 = $("<td>3</td>");
+
+        //4번 td생성
+        var $td4 = $('<td>').text(4);
+
+        //2번째 tr에 3,4번 td붙이기
+        $tr2.append($td3,$td4);
+
+        //1번째,2번째 tr을 table에 붙이고
+        //table을 #box에 붙이기
+        $table.append($tr1,$tr2)
+              .appendTo("#box");
+
+
+        //요소를 붙이는 메서드
+        //부모.append(자식)
+        //자식.appendTo(부모)
+        //부모.prepend(자식)
+        //자식.prependTo(부모)
+
+        //before()
+        //insertBefore()
+        //after()
+        //insertAfter()
+
+
+
+
+    });//button click() end
+</script>
+</body>
+</html>

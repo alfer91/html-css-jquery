@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>this와 index</title>
+</head>
+<body>
+    <p>
+        <button>버튼1</button>
+        <button>버튼2</button>
+        <button>버튼3</button>
+    </p>
+<script src="js/jquery.js"></script>
+<script>
+
+    /*
+    jquery를 사용하는 이유는
+    순수자바스크립트객체들이 좋은 기능(함수)이
+    별로 없기 때문입니다.
+
+    그래서 순수 javascript요소객체를 jquery객체로
+    바꿔서 사용합니다.
+
+     */
+
+   $("button").click(function () {
+
+
+       //this 키워드는 순수자바스크립트요소객체
+
+       //순수 자바스크립트요소객체를 jquery객체로
+       //변경하려면 $(자바스크립트요소객체)
+
+       $(this).css("color","red");
+
+   });//click() end
+
+</script>
+</body>
+</html>

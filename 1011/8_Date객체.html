@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Date객체</title>
+</head>
+<body>
+<h1>????년 ?월 ?일 ?:?:?</h1>
+<script src="js/jquery.js"></script>
+<script>
+    //Math가 수학관련
+    //Date는 년월일시분초등 시간관련
+
+    //현재 시간을 가지는 객체
+    var now = new Date();
+
+    //현재 년도
+    var year = now.getFullYear();
+    //현재 달(월은 0월부터)
+    var month = now.getMonth()+1;
+    //현재 날짜
+    var date = now.getDate();
+    //현재 시간
+    var hour = now.getHours();
+    //현재 분
+    var min = now.getMinutes();
+    //현재 초
+    var sec = now.getSeconds();
+
+    //전체 시간
+    var fullTime = year+"년 "+ month+"월 "+
+                   date+"일 " + hour+":"+
+                   min+":" + sec;
+
+    $("h1").text(fullTime);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>색상과 박스그림자</title>
+    <style>
+        .box {
+            width:200px;
+            height:200px;
+            color:#fff;
+            text-align: center;
+            line-height: 200px;
+            font-size: 80px;
+            font-weight:bold;
+        }
+        #red {
+            background: red;
+            /*
+                ※ color값
+                1) 키워드(red,green,blue,white,black..)
+                2) #16진수 6자리(0~F)
+                   예) #000000, #00FF00
+                3) #16진수 3자리
+                #000, #fff, #f00
+                4) rgb(0~255,0~255,0~255)
+                5) rgb(0~100%,0~100%,0~100%)
+                //퍼센트는 전부 %를 씁니다.
+
+                여기서 a는 알파값(투명도)
+                6) rgba(0~255,0~255,0~255,0~1)
+                7) rgba(0~100%,0~100%,0~100%,0~1)
+
+            */
+        }
+
+        #blue {
+            margin-top:-150px;
+            margin-left:100px;
+            background: rgba(0%,0%,100%,.5);
+        }
+    </style>
+</head>
+<body>
+<div id="red" class="box">RED</div>
+<div id="blue" class="box">BLUE</div>
+</body>
+</html>

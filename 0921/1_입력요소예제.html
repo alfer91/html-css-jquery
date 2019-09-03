@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>여러가지 입력요소 복습</title>
+    <style>
+        /*
+
+        textarea요소는 유저가 크기를 마우스로
+        변경할 수 있습니다. 그를 막아주는 css속성
+        resize
+
+        */
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+<h1>여러가지 입력요소</h1>
+<!-- form의 필수 속성(attribute)
+    1) action : 파라미터를 넘길 주소
+    2) method : get(기본),post,(put,delete...)
+
+ -->
+<form action="sdfasdrf" method="get">
+    <h2>글자 입력</h2>
+    <input type="text"
+           name="id"
+           placeholder="아이디" />
+    <h2>비밀번호 입력</h2>
+    <input type="password"
+           name="pwd"
+           placeholder="비밀번호"/>
+    <h2>성별 입력</h2>
+    <!--
+        input type=radio는
+        name요소를 같은 이름으로 묶어야 하나가 됩니다.
+     -->
+    <label>
+    <input type="radio"
+           value="F"
+           name="gender"/>
+        여자
+    </label>
+    <input id="male"
+           value="M"
+           name="gender" type="radio" />
+    <label for="male">남자</label>
+    <h2>취미 선택</h2>
+    <input type="checkbox"
+           name="hobby"
+           value="game"
+           id="game"/>
+    <label for="game">게 임</label>
+    <input type="checkbox"
+           name="hobby"
+           value="reading"
+           id="reading"/>
+    <label for="reading">독서</label>
+    <input type="checkbox"
+           name="hobby"
+           value="movie"
+           id="movie"/>
+    <label for="movie">영화보기</label>
+    <h2>생년월일 입력</h2>
+    <select name="year">
+        <option value="2017">2017년</option>
+        <option value="2016">2016년</option>
+        <option value="2015">2015년</option>
+        <option value="2014">2014년</option>
+        <option value="2013">2013년</option>
+        <option value="2012">2012년</option>
+    </select>
+    <h2>당신의 프로필 입력</h2>
+    <!-- textarea의 필수 속성
+        rows / cols
+     -->
+    <textarea rows="5"
+              cols="40"
+              placeholder="당신을 200글자로 표현해주세요."
+              name="profile"></textarea>
+
+    <h2>프사 등록</h2>
+    <input type="file" name="picture" />
+    <!-- 유저에게는 보여주지 않는 input이지만
+        서버로는 넘겨야할 데이터가 있다면
+        input type=hidden을 사용
+     -->
+    <input type="hidden" name="no" value="43"/>
+    <p>
+        <!-- 버튼의 타입
+            1) submit : 폼에 있을때 기본
+            2) button : 일반적인 버튼
+            3) reset : 폼의 리셋
+         -->
+        <button type="submit">회원가입</button>
+        <button type="reset">리셋</button>
+    </p>
+</form>
+</body>
+</html>

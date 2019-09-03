@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>복습</title>
+    <style>
+        #tab {
+            width:160px;
+            height:50px;
+            background: #FF4081;
+            text-align: center;
+            line-height: 50px;
+            color:#fff;
+            font-size:20px;
+            border-radius: 20px 20px 0 0;
+            border:2px solid blue;
+            border-bottom: none;
+        }
+        #box {
+            width:300px;
+            height:200px;
+            background: #FF4081;
+            border:2px solid blue;
+            padding:20px;
+            border-radius: 0 20px 20px 0;
+            background-image: url(img/002.gif);
+            background-size: 60px 60px;
+            background-repeat: no-repeat;
+            background-position: 10px 170px;
+            /*포지셔닝컨텍스트 지정*/
+            position: relative;
+        }
+        #ryan {
+            position: absolute;
+            right:10px;
+            bottom:10px;
+        }
+        #triangle {
+            width:0;
+            height:0;
+            border-left:60px solid transparent;
+            border-right:60px solid transparent;
+            border-bottom:50px solid #424242;
+        }
+
+        #profile {
+            width:140px;
+            height:180px;
+            padding:20px;
+            border:10px solid #424242;
+            text-align: center;
+            font-size:20px;
+            color:#424242;
+            position: fixed;
+            left:50%;
+            top:50%;
+            margin-left:-100px;
+            margin-top:-120px;
+            background: #fff;
+        }
+
+        #profile img {
+            border:10px solid #424242;
+            border-radius: 70px;
+            margin-bottom:10px;
+        }
+
+        #monster {
+            position: fixed;
+            right:10px;
+            bottom:10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>복습</h1>
+    <h2>텝모양 만들기</h2>
+    <div id="tab">영화</div>
+    <div id="box">
+        내용이 쭉쭉 들어갑니다.
+        <img id="ryan" src="img/002.gif" width="60" />
+    </div>
+    <hr/>
+    <h2>삼각형 만들기</h2>
+    <div id="triangle"></div>
+    <hr/>
+    <h2>프로필 만들기</h2>
+    <div id="profile">
+        <img src="img/irene.jpeg" width="120"/>
+        <strong>아이린</strong>
+    </div>
+    <img src="img/monster.png" id="monster" />
+</body>
+</html>

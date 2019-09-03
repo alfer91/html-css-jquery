@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>moment라이브러리</title>
+</head>
+<body>
+<h1>????????</h1>
+<!-- jquery import -->
+<script src="js/jquery.js"></script>
+<!-- moment.js import -->
+<script src="js/moment-with-locales.js"></script>
+<script>
+    /*
+        jquery는 css변경
+                 text변경
+                 요소선택
+                 이펙트처리
+                 이벤트처리
+                 ajax처리 등이 편리한 라이브러리입니다.
+
+        momentjs : 시간관련 라이브러리
+
+     */
+
+    //현재 시간을 가진 moment객체
+    // https://momentjs.com/docs/
+    var now = moment();
+
+    //원하는 문자열을 포맷으로
+    var fullTime = now.format("YYYY년 M월 D일 hh:mm:ss");
+
+    $("h1").text(fullTime);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>복습2</title>
+    <style>
+        button {
+            padding:20px;
+            border:none;
+        }
+        button:nth-child(1) {
+            background: deeppink;
+        }
+        button:nth-child(2) {
+            background: deepskyblue;
+        }
+        button:nth-child(3) {
+            background: lime;
+        }
+        #box {width:400px;height:300px;border:1px solid #000}
+    </style>
+</head>
+<body>
+<p>
+    <button>DEEPPINK</button>
+    <button>DEEPSKYBLUE</button>
+    <button>LIME</button>
+</p>
+<div id="box"></div>
+<script src="js/jquery.js"></script>
+<script>
+
+    $("button").click(function () {
+
+        //유저가 클릭한 그 버튼을 선택하고
+        //jquery객체로 변경하고
+        //그 버튼에서 뒷배경색을 얻어옵니다.
+        var color = $(this).css("background-color");
+
+        //id가 box인 요소를 선택하고
+        //아까 받아온 그 색상을 뒷배경색으로
+        $("#box").css("background",color);
+
+    });//click() end
+
+
+
+//    $("button:eq(0)").click(function () {
+//       $("#box").css("background","deeppink");
+//    });//click() end
+//
+//    $("button:eq(1)").click(function () {
+//       $("#box").css("background","deepskyblue");
+//    });//click() end
+//
+//    $("button:eq(2)").click(function () {
+//       $("#box").css("background","lime");
+//    });//click() end
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>index메서드</title>
+</head>
+<body>
+<button>버튼</button>
+<button>버튼</button>
+<button>버튼</button>
+<button>버튼</button>
+<script src="js/jquery.js"></script>
+<script>
+
+    //index를 얻어오는 메서드 : index();
+
+    $("button").click(function () {
+
+        var idx = $(this).index();
+
+        //alert(idx);
+
+        alert("나는 "+(idx+1)+"번째 버튼!");
+
+    });//click() end
+
+</script>
+</body>
+</html>

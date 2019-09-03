@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>무한슬라이드</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        #slideBox{
+            width:1024px;
+            height:768px;
+            border:20px solid #424242;
+            position: relative;
+            margin:auto;
+        }
+        #slide {
+            width:1024px;
+            height:768px;
+            position: relative;
+            overflow: hidden;
+        }
+        .item {
+            width:1024px;
+            height:768px;
+            background: red;
+            position: absolute;
+        }
+        .item:nth-child(1) {
+            background: url(img/1.jpg);
+        }
+        .item:nth-child(2) {
+            left:1024px;
+            background: url(img/2.jpg);
+        }
+        .btn {
+            position: absolute;
+            width:50px;
+            height:50px;
+            top:359px;
+        }
+        #prevBtn {
+            left:0;
+
+        }
+        #nextBtn {
+            right:0;
+        }
+    </style>
+</head>
+<body>
+    <h1>무한슬라이드</h1>
+    <div id="slideBox">
+        <div id="slide">
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <button id="prevBtn" class="btn">앞</button>
+        <button id="nextBtn" class="btn">뒤</button>
+    </div>
+<script src="js/jquery.js"></script>
+<script>
+
+    var imgs = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg"];
+    var idx = 0;
+
+    $("#prevBtn").click(function () {
+
+       $(".item:eq(0)").css({"left":0,background:"url(img/"+imgs[idx++]+")"}).animate({left:-1024},300);
+
+       if(idx==10) {
+           idx=0;
+       }
+
+       $(".item:eq(1)").css({"left":1024,background:"url(img/"+imgs[idx]+")"}).animate({left:0},300);
+    });
+    $("#nextBtn").click(function () {
+
+       $(".item:eq(0)").css({"left":0,background:"url(img/"+imgs[idx--]+")"}).animate({left:1024},300);
+
+        if(idx==-1) {
+            idx=9;
+        }
+
+       $(".item:eq(1)").css({"left":-1024,background:"url(img/"+imgs[idx]+")"}).animate({left:0},300);
+    });
+
+
+
+</script>
+</body>
+</html>

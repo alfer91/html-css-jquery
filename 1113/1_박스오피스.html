@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>박스오피스</title>
+    <style>
+        #loader {
+            position: fixed;
+            width:100%;
+            height:100%;
+            left:0;
+            top:0;
+            background-color:rgba(255,255,255,.8);
+            background-image: url(img/loader2.gif);
+            /*background-repeat: no-repeat;*/
+            /*background-position: center;*/
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<button>버튼</button>
+<table border="1">
+    <thead>
+        <tr>
+            <th>등수</th>
+            <th>영화명</th>
+            <th>관객수</th>
+            <th>개봉일</th>
+            <th>기존&amp;신규</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="5">아직 없음</td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="loader"></div>
+<script src="js/jquery.js"></script>
+<script src="js/moment-with-locales.js"></script>
+<script>
+    //콤마찍는 함수
+    function comma(str) {
+        str = String(str);
+        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    }
+
+    //id가 loader인 div요소
+    var $loader = $("#loader");
+
+    //이벤트(유저나 브라우저의 행동)처리
+    $("button").click(function () {
+
+        //로딩이미지 보여줌
+        $loader.show();
+
+        $.ajax({
+            url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
+            data:{
+                key:"430156241533f1d058c603178cc3ca0e",
+                targetDt:"20171112",
+                itemPerPage:9
+            },//서버로 넘길 파라미터
+            error:function () {
+                alert("서버 점검중~ 다시 시도해보세요~");
+            },success:function (json) {
+
+                var movies = json.boxOfficeResult.dailyBoxOfficeList;
+
+                //기존의 tr들 전부 비우기
+                $("tbody").empty();
+
+                //영화배열로 each(각각)
+                $(movies).each(function (index) {
+
+                    console.log(this.movieNm);
+
+                    //<tr>
+                    //<td>1</td>
+                    //<td>토르</td>
+                    //<td>203444</td>
+                    //<td>2017-11-02</td>
+                    //<td>OLD</td>
+                    //</tr>
+
+                    var $tr = $('<tr>');
+                    var $td1 = $("<td>").text(this.rank);
+                    var $td2 = $("<td>").text(this.movieNm);
+                    var audienceNum = comma(this.audiAcc);
+                    var $td3 = $("<td>").text(audienceNum+"명");
+                    var openDate =  moment(this.openDt).format("YYYY년 MM월 DD일");
+                    var $td4 = $("<td>").text(openDate);
+                    var $td5 = $("<td>").text(this.rankOldAndNew);
+
+                    $tr.append($td1,$td2,$td3,$td4,$td5)
+                        .appendTo("tbody");
+
+                });//each() end
+
+                //로딩이미지 숨기기
+                $loader.hide();
+
+            }//success end
+        });//$.ajax() end
+
+    });//click() end
+
+
+</script>
+</body>
+</html>

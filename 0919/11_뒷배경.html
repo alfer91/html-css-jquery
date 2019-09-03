@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>뒷배경</title>
+    <style>
+        #box {
+            width:800px;
+            height:600px;
+            /*
+                뒷배경관련 속성
+
+                background : 대표속성
+                background-color : 색상
+                background-image : 뒷배경이미지
+
+            */
+
+            /* 뒷배경색 */
+            background-color: #424242;
+            /*뒷배경이미지 */
+            background-image:url(img/zo.png),
+                             url(img/loader.gif);
+            /*뒷배경반복여부*/
+            background-repeat: no-repeat;
+            /*
+                뒷배경의 포지션지정
+                x축 y축
+                (키워드:center,left,top,bottom...)
+
+            */
+            background-position: 653px 50px, center;
+
+            /*둥근보더*/
+            border-radius: 70px;
+
+        }
+        #profile {
+            width:200px;
+            height:200px;
+            border-radius: 100px;
+            background-image:url(img/irene.jpeg);
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="profile"></div>
+</body>
+</html>

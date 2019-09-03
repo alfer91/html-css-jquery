@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인라인블록</title>
+    <style>
+        #box {
+            width:800px;
+            height:100px;
+            background: silver;
+            /*
+                인라인블록은 인라인속성을 가지기 때문에
+                부모에 text-align:center를 주면
+                가운데 정렬
+            */
+            text-align: center;
+        }
+        .box {
+            width:100px;
+            height:100px;
+            /*
+
+                인라인블록은
+                인라인처럼 수평으로
+                블록처럼 width,height를 가짐
+
+            */
+            display: inline-block;
+        }
+        .red {background: red}
+        .green {background: green}
+        .blue {background: blue}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!-- 인라인은 엔터치면 약간 공간 벌어짐
+            그래서 주석으로 깔끔하게 처리함
+         -->
+        <div class="box red"></div><!--
+    --><div class="box green"></div><!--
+    --><div class="box blue"></div>
+    </div><!--#box -->
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>언더스코어 템플릿</title>
+</head>
+<body>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
+<script>
+
+    //  함수 = _.template(템플릿마크업);
+
+    var tmp = _.template("<h1><%=msg%></h1>");
+
+    //문자열
+    var markup = tmp({msg:"후후후후후"});
+
+    alert(markup);
+
+
+    /*
+        자바스크립트 라이브러리 장점
+        1) jquery : DOM선택, 컨텐츠변경,
+                    이벤트처리, 이펙트, ajax처리
+           ( $() or jQuery() )
+        2) moment : 날짜, 시간처리 ( moment() )
+        3) underscore : 배열, 템플릿 ( _()  )
+
+     */
+
+
+
+</script>
+</body>
+</html>

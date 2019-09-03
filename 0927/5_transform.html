@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>transform에 대하여</title>
+    <style>
+        #wrap {
+            width:1000px;
+            height:800px;
+            border:1px solid #424242;
+            margin:auto;
+            position: relative;
+        }
+        .box {
+            width:100px;
+            height:100px;
+            transition:.2s ease;
+        }
+        /*
+            transform이란?
+            transform은 변형시키다라는 뜻
+
+            속성값
+            - translate : 운반(x,y,z)
+            - scale : 비율
+            - rotate : 회전
+
+            - skew : 별로.....
+            - matrix : 어려움....
+
+
+        */
+        .red {
+            background: #FF1744;
+            /* 기본값 지정 */
+            transform:translate(0,0);
+        }
+        #wrap:hover .red {
+            transform:translate(350px,200px);
+        }
+        .green {
+            background: #76FF03;
+            /* 기본값을 정의 */
+            transform:translate(650px,300px) rotate(0deg);
+
+        }
+        #wrap:hover .green {
+            transform:translate(650px,300px) rotate(360deg);
+        }
+        .blue {
+            background: #00E5FF;
+            transform:translate(100px,200px) scale(1);
+
+            /*position: absolute;*/
+            /*left:100px;*/
+            /*bottom:300px;*/
+        }
+        #wrap:hover .blue {
+            transform:translate(100px,200px) scale(2);
+            /*-webkit-transform: ;*/
+            /*-moz-transform: ;*/
+            /*-ms-transform: ;*/
+            /*-o-transform: ;*/
+            /*transform: ;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box blue"></div>
+    </div>
+</body>
+</html>

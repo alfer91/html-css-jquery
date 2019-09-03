@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트리스너 붙였다 떼기</title>
+    <style>
+        #box {
+            width:300px;
+            height:300px;
+            background: #424242;
+            text-align: center;
+            line-height: 300px;
+            font-size:200px;
+            font-weight:bold;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <!-- 구조와 동작의 분리 때문에 사용불가 -->
+        <!--<button onclick="alert('test')">붙이기</button>-->
+        <button>붙이기</button>
+        <button>떼기</button>
+    </p>
+    <div id="box">X</div>
+<script src="js/jquery.js"></script>
+<script>
+
+    /*
+        이벤트리스너를 붙이는 메서드
+        on("이벤트명",함수)
+
+        이벤트리스너를 떼는 메서드
+        off("이벤트명")
+
+
+        그런데 편리함을 위해서
+        이벤트명() 메서드가 있습니다.
+        예) click(), mousemove(), mouseleave()...
+
+
+    */
+
+//    $("button:eq(0)").click(function () {});
+
+    $("button:eq(0)").on("click",function () {
+
+        //#box의 뒷배경색이 #00bfff로 변경
+        //글자가 'O'로
+        //mouseenter이벤트리스너가 붙습니다.
+
+        var $box = $("#box");
+
+        $box.css("background","#00bfff")
+            .text("O")
+            .on("mouseenter",function () {
+               alert("이벤트리스너가 붙었네요!!");
+            });
+
+    });//붙기 버튼 click() end
+    
+    
+    $("button:eq(1)").on("click",function () {
+
+        $("#box").css("background","#424242")
+                 .text("X")
+                 .off("mouseenter");
+
+
+    });//떼기 버튼 click() end
+    
+    
+
+
+
+
+
+    /*
+        이벤트기반의 프로그래밍
+
+        1) 이벤트 : 유저(브라우저)가 하는 행동(click,mousemove,keydown.....)
+        2) 이벤트타겟 : 이벤트리스너를 붙일 요소
+        3) 이벤트리스너 : 이벤트감지자(눈에 보이지 않음)
+                          이벤트핸들러(함수)를 호출
+        4) 이벤트핸들러 : 함수
+
+     */
+
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요소의 삭제</title>
+    <style>
+        ul {
+            background: silver;
+            width:200px;
+            padding:20px;
+            list-style: none;
+            text-align: center;
+        }
+        li {
+            padding:20px;
+            background: #03A9F4;
+            margin:5px;
+            cursor: pointer;
+        }
+        li:hover {
+            background: #01579B;
+            color:#fff;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+            0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+<body>
+    <form id="form" action="http://naver.com">
+        <input id="name">
+        <button type="submit">동물추가</button>
+        <button type="reset">리셋</button>
+        <button id="deleteAllBtn" type="button">전체삭제</button>
+    </form>
+<h1>동물목록</h1>
+<ul>
+    <li>고슴도치</li>
+    <li>라이언</li>
+</ul>
+
+<script src="js/jquery.js"></script>
+<script>
+
+    var $name = $("#name");
+
+    /*
+        이벤트리스너 붙이는 메서드 : on()
+
+        1) 요소.on("이벤트명",함수)
+
+        2) 부모.on("이벤트명",요소,함수)
+        기존에 있는 요소와 새로 생성되는 요소들까지
+        전부 이벤트리스너를 붙여주는 메서드
+    */
+
+    $("ul").on("click","li",function () {
+
+       $(this).remove();
+
+    });//click() end
+
+
+    /*
+    요소 삭제 메서드
+     1) 자손요소들 전부 지우기(empty())
+     2) 해당요소만 지우기(remove())
+     */
+
+    $("#deleteAllBtn").click(function () {
+
+        $("ul").empty();//전체 비우기
+
+    });//click() end
+
+    $("#form").on("submit",function (e) {
+
+        var name = $name.val();
+
+        $("<li>").text(name)
+                 .appendTo("ul");
+
+        $name.val("").focus();
+
+        return false;//or e.preventDefault();
+    });//on() end
+</script>
+</body>
+</html>

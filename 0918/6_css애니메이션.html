@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>css 애니메이션</title>
+    <!--
+
+    favicon 설정
+    (https://www.favicon-generator.org/)
+
+     -->
+    <link rel="shortcut icon"
+          href="img/android-icon-96x96.png" />
+    <style>
+        body {
+            /*
+            인라인 수평가운데정렬
+            :부모요소에 글자가운데 정렬
+            */
+            text-align: center;
+            padding-top:100px;
+        }
+
+        /* bounce라는 이름의 키프레임을 생성 */
+        @keyframes bounce {
+            from {transform:scale(1)}
+            to {transform:scale(2)}
+        }
+
+        img {
+            /*
+            animation속성으로 지정
+            animation:키프레임이름 시간 횟수 가속도
+            */
+            animation:bounce 10s 1 ease;
+        }
+
+
+
+        /*
+
+            CSS의 애니메이션
+
+            1) keyframes : 프레임설정
+            2) animation속성 : 키프레임을 설정
+
+        */
+
+
+
+        /*
+            margin,border,padding,width,height
+            14가지 : 박스모델
+         */
+
+    </style>
+</head>
+<body>
+    <img src="img/heart.png"
+         width="300"
+         align="하트" />
+</body>
+</html>
